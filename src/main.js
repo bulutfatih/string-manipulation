@@ -1,30 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TakeAction from "./functions";
-
-const style = {
-  inputText: {
-    width: "500px",
-    height: "250px",
-    margin: "10px",
-    borderRadius: "10px",
-    outline: 0
-  },
-  outputText: {
-    width: "500px",
-    height: "250px",
-    margin: "10px",
-    borderRadius: "10px",
-    background: "#fafafa",
-    outline: 0
-  },
-  title: {
-    margin: "15px 0 5px 10px"
-  },
-  textAreaDiv: {
-    display: "flex",
-    flexDirection: "horizontal"
-  }
-};
+import CloseIcon from "./close-button.svg";
+import LeftArrowIcon from "./left-arrow.svg";
+import CopyIcon from "./copy.svg";
 
 const Main = () => {
   const [checkedValue, setCheckedValue] = useState("");
@@ -32,6 +10,13 @@ const Main = () => {
     "i AM a CrAzy StrINg, MAkE mE nORMal!"
   );
   const [outputText, setOutputText] = useState("");
+  const outputTextRef = useRef(null);
+
+  const copyToClipboard = e => {
+    outputTextRef.current.select();
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();
+  };
 
   useEffect(() => {
     if (inputText && checkedValue) {
@@ -40,33 +25,65 @@ const Main = () => {
         checkedRadioId: checkedValue
       });
       setOutputText(result);
-    }
+    } else setOutputText("");
   }, [inputText, checkedValue]);
 
   return (
     <>
-      <div style={style.textAreaDiv}>
-        <div>
-          <h2 style={style.title}>Enter text</h2>
-          <textarea
-            name="input"
-            style={style.inputText}
-            value={inputText}
-            onChange={e => setInputText(e.target.value)}
-          />
+      <div className="outer-container">
+        <div className="inner-container">
+          <span className="title">Original text</span>
+          <div className="wrapper">
+            <div className="wrapper__left">
+              <textarea
+                className="wrapper__textarea"
+                value={inputText}
+                onChange={e => setInputText(e.target.value)}
+              />
+            </div>
+            <div className="wrapper__right">
+              <div className="wrapper__close-button">
+                <img alt="" src={CloseIcon} onClick={() => setInputText("")} />
+              </div>
+              <div className="wrapper__transfer-button">
+                <img
+                  alt=""
+                  src={LeftArrowIcon}
+                  onClick={() => setInputText(outputText)}
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div>
-          <h2 style={style.title}>Converted text</h2>
-          <textarea
-            name="output"
-            style={style.outputText}
-            value={outputText}
-            readOnly
-          />
+        <div className="inner-container">
+          <span className="title">Converted text</span>
+          <div className="wrapper">
+            <div className="wrapper__left gray-bg">
+              <textarea
+                className="wrapper__textarea gray-bg"
+                value={outputText}
+                ref={outputTextRef}
+                readOnly
+              />
+            </div>
+            <div className="wrapper__right">
+              <div className="wrapper__copy-button">
+                <img alt="" src={CopyIcon} onClick={copyToClipboard} />
+              </div>
+              <div className="wrapper__transfer-button">
+                <img
+                  alt=""
+                  src={LeftArrowIcon}
+                  onClick={() => setInputText(outputText)}
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <form>
+
+      <form className="options-form">
         <div>
           <label>
             <input
@@ -75,6 +92,9 @@ const Main = () => {
               checked={checkedValue === "upperCase"}
               onChange={() => setCheckedValue("upperCase")}
             />
+            <button className="info-button" disabled>
+              ?
+            </button>
             UPPER CASE
           </label>
         </div>
@@ -85,7 +105,11 @@ const Main = () => {
               value="lowerCase"
               checked={checkedValue === "lowerCase"}
               onChange={() => setCheckedValue("lowerCase")}
+              placeholder="place holder"
             />
+            <button className="info-button" disabled>
+              ?
+            </button>
             lower case
           </label>
         </div>
@@ -97,6 +121,9 @@ const Main = () => {
               checked={checkedValue === "titleCase"}
               onChange={() => setCheckedValue("titleCase")}
             />
+            <button className="info-button" disabled>
+              ?
+            </button>
             Title Case
           </label>
         </div>
@@ -108,6 +135,9 @@ const Main = () => {
               checked={checkedValue === "sentenceCase"}
               onChange={() => setCheckedValue("sentenceCase")}
             />
+            <button className="info-button" disabled>
+              ?
+            </button>
             Sentence case
           </label>
         </div>
@@ -119,6 +149,9 @@ const Main = () => {
               checked={checkedValue === "invertCase"}
               onChange={() => setCheckedValue("invertCase")}
             />
+            <button className="info-button" disabled>
+              ?
+            </button>
             iNVERT cASE
           </label>
         </div>

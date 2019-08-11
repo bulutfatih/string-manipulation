@@ -29,8 +29,6 @@ const invertCase = str => {
 
 const TakeAction = props => {
   const { str, checkedRadioId } = props;
-  console.log(str);
-  console.log(checkedRadioId);
 
   switch (checkedRadioId) {
     case "upperCase":
