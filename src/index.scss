@@ -72,6 +72,8 @@ code {
 .wrapper__close-button {
   display: flex;
   flex: 1;
+  align-items: center;
+  justify-content: center;
   width: 30px;
   height: 30px;
   font-size: 40px;
@@ -93,6 +95,8 @@ code {
 .wrapper__transfer-button {
   display: flex;
   flex: 9;
+  align-items: center;
+  justify-content: center;
   width: 30px;
   height: 30px;
   font-size: 40px;
@@ -112,6 +116,8 @@ code {
 .wrapper__copy-button {
   display: flex;
   flex: 1;
+  align-items: center;
+  justify-content: center;
   width: 30px;
   height: 30px;
   font-size: 40px;
@@ -148,5 +154,15 @@ code {
 }
 
 .options-form {
-  margin-left: 24px;
+  margin: 0 0 24px 24px;
+}
+
+.react-tooltip-lite {
+  background: #333;
+  color: white;
+  border-radius: 2px;
+}
+
+.react-tooltip-lite-arrow {
+  border-color: #333;
 }

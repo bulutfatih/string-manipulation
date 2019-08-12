@@ -3,6 +3,8 @@ import TakeAction from "./functions";
 import CloseIcon from "./close-button.svg";
 import LeftArrowIcon from "./left-arrow.svg";
 import CopyIcon from "./copy.svg";
+import Tooltip from "react-tooltip-lite";
+import Option from "./option";
 
 const Main = () => {
   const [checkedValue, setCheckedValue] = useState("");
@@ -43,14 +45,25 @@ const Main = () => {
             </div>
             <div className="wrapper__right">
               <div className="wrapper__close-button">
-                <img alt="" src={CloseIcon} onClick={() => setInputText("")} />
+                <Tooltip content="Clear" direction="down">
+                  <img
+                    alt=""
+                    src={CloseIcon}
+                    onClick={() => setInputText("")}
+                  />
+                </Tooltip>
               </div>
               <div className="wrapper__transfer-button">
-                <img
-                  alt=""
-                  src={LeftArrowIcon}
-                  onClick={() => setInputText(outputText)}
-                />
+                <Tooltip
+                  content="Transfer the result to input"
+                  direction="down"
+                >
+                  <img
+                    alt=""
+                    src={LeftArrowIcon}
+                    onClick={() => setInputText(outputText)}
+                  />
+                </Tooltip>
               </div>
             </div>
           </div>
@@ -69,14 +82,21 @@ const Main = () => {
             </div>
             <div className="wrapper__right">
               <div className="wrapper__copy-button">
-                <img alt="" src={CopyIcon} onClick={copyToClipboard} />
+                <Tooltip content="Copy to clipboard" direction="down">
+                  <img alt="" src={CopyIcon} onClick={copyToClipboard} />
+                </Tooltip>
               </div>
               <div className="wrapper__transfer-button">
-                <img
-                  alt=""
-                  src={LeftArrowIcon}
-                  onClick={() => setInputText(outputText)}
-                />
+                <Tooltip
+                  content="Transfer the result to input"
+                  direction="down"
+                >
+                  <img
+                    alt=""
+                    src={LeftArrowIcon}
+                    onClick={() => setInputText(outputText)}
+                  />
+                </Tooltip>
               </div>
             </div>
           </div>
@@ -84,77 +104,44 @@ const Main = () => {
       </div>
 
       <form className="options-form">
-        <div>
-          <label>
-            <input
-              type="radio"
-              value="upperCase"
-              checked={checkedValue === "upperCase"}
-              onChange={() => setCheckedValue("upperCase")}
-            />
-            <button className="info-button" disabled>
-              ?
-            </button>
-            UPPER CASE
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-              type="radio"
-              value="lowerCase"
-              checked={checkedValue === "lowerCase"}
-              onChange={() => setCheckedValue("lowerCase")}
-              placeholder="place holder"
-            />
-            <button className="info-button" disabled>
-              ?
-            </button>
-            lower case
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-              type="radio"
-              value="titleCase"
-              checked={checkedValue === "titleCase"}
-              onChange={() => setCheckedValue("titleCase")}
-            />
-            <button className="info-button" disabled>
-              ?
-            </button>
-            Title Case
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-              type="radio"
-              value="sentenceCase"
-              checked={checkedValue === "sentenceCase"}
-              onChange={() => setCheckedValue("sentenceCase")}
-            />
-            <button className="info-button" disabled>
-              ?
-            </button>
-            Sentence case
-          </label>
-        </div>
-        <div>
-          <label>
-            <input
-              type="radio"
-              value="invertCase"
-              checked={checkedValue === "invertCase"}
-              onChange={() => setCheckedValue("invertCase")}
-            />
-            <button className="info-button" disabled>
-              ?
-            </button>
-            iNVERT cASE
-          </label>
-        </div>
+        <Option
+          label="UPPER CASE"
+          value="upperCase"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{ original: "original text", result: "result text" }}
+        />
+        <Option
+          label="lower case"
+          value="lowerCase"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{ original: "original text", result: "result text" }}
+        />
+
+        <Option
+          label="Title Case"
+          value="titleCase"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{ original: "original text", result: "result text" }}
+        />
+
+        <Option
+          label="Sentence case"
+          value="sentenceCase"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{ original: "original text", result: "result text" }}
+        />
+
+        <Option
+          label="iNVERT cASE"
+          value="invertCase"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{ original: "original text", result: "result text" }}
+        />
       </form>
     </>
   );
