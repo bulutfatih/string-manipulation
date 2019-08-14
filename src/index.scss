@@ -140,23 +140,6 @@ code {
   background-color: #f0f0f0;
 }
 
-.info-button {
-  background: #0d93bf;
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 50%;
-  width: 17px;
-  height: 17px;
-  text-align: center;
-  padding: 0;
-  margin: 0 5px;
-}
-
-.options-form {
-  margin: 0 0 24px 24px;
-}
-
 .react-tooltip-lite {
   background: #333;
   color: white;
@@ -166,4 +149,59 @@ code {
 
 .react-tooltip-lite-arrow {
   border-color: #333;
+}
+
+.info-template__container {
+  display: inline-block;
+}
+
+.info-template__button {
+  background: #0d93bf;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  padding: 0;
+  margin: 1px 5px;
+}
+
+.info-template__inner-container {
+  display: flex;
+  flex-direction: row;
+  span {
+    color: #fafafa;
+  }
+  .left {
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+  .middle {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    img {
+      width: 24px;
+    }
+  }
+  .right {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.options-form {
+  margin: 0 0 24px 24px;
+}
+
+.option-container {
+  margin: 10px;
+  label {
+    display: flex;
+    align-items: center;
+  }
 }

@@ -1,14 +1,34 @@
 import React from "react";
+import Tooltip from "react-tooltip-lite";
+import ConvertIcon from "./images/convert.svg";
+
+const InfoTemplate = example => {
+  const { original, result } = example;
+  return (
+    <div className="info-template__inner-container">
+      <div className="left">
+        <span>{original}</span>
+      </div>
+      <div className="middle">
+        <img alt="" src={ConvertIcon} />
+      </div>
+      <div className="right">
+        <span>{result}</span>
+      </div>
+    </div>
+  );
+};
 
 const Info = props => {
   const { example } = props;
-  // there will be a tooltip that shows original and result
   return (
-    <>
-      <button className="info-button" disabled>
-        ?
-      </button>
-    </>
+    <div className="info-template__container">
+      <Tooltip content={InfoTemplate(example)} direction="below">
+        <button className="info-template__button" disabled>
+          i
+        </button>
+      </Tooltip>
+    </div>
   );
 };
 

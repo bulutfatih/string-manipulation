@@ -3,9 +3,8 @@ import Info from "./info";
 
 const Option = props => {
   const { value, label, checkedValue, setCheckedValue, info_example } = props;
-
   return (
-    <div>
+    <div className="option-container">
       <label>
         <input
           type="radio"

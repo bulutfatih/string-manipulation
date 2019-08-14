@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import TakeAction from "./functions";
-import CloseIcon from "./close-button.svg";
-import LeftArrowIcon from "./left-arrow.svg";
-import CopyIcon from "./copy.svg";
+import CloseIcon from "./images/close-button.svg";
+import LeftArrowIcon from "./images/left-arrow.svg";
+import CopyIcon from "./images/copy.svg";
 import Tooltip from "react-tooltip-lite";
 import Option from "./option";
 
@@ -55,7 +55,7 @@ const Main = () => {
               </div>
               <div className="wrapper__transfer-button">
                 <Tooltip
-                  content="Transfer the result to input"
+                  content="Transfer the result to the input"
                   direction="down"
                 >
                   <img
@@ -88,7 +88,7 @@ const Main = () => {
               </div>
               <div className="wrapper__transfer-button">
                 <Tooltip
-                  content="Transfer the result to input"
+                  content="Transfer the result to the input"
                   direction="down"
                 >
                   <img
@@ -109,14 +109,14 @@ const Main = () => {
           value="upperCase"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "original text", result: "result text" }}
+          info_example={{ original: "eXaMpLe TeXt", result: "EXAMPLE TEXT" }}
         />
         <Option
           label="lower case"
           value="lowerCase"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "original text", result: "result text" }}
+          info_example={{ original: "eXaMpLe TeXt", result: "example text" }}
         />
 
         <Option
@@ -124,7 +124,7 @@ const Main = () => {
           value="titleCase"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "original text", result: "result text" }}
+          info_example={{ original: "eXaMpLe TeXt", result: "Example Text" }}
         />
 
         <Option
@@ -132,7 +132,7 @@ const Main = () => {
           value="sentenceCase"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "original text", result: "result text" }}
+          info_example={{ original: "eXaMpLe TeXt", result: "Example text" }}
         />
 
         <Option
@@ -140,7 +140,7 @@ const Main = () => {
           value="invertCase"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "original text", result: "result text" }}
+          info_example={{ original: "eXaMpLe TeXt", result: "ExAmPlE tExT" }}
         />
       </form>
     </>
