@@ -111,6 +111,7 @@ const Main = () => {
           setCheckedValue={setCheckedValue}
           info_example={{ original: "eXaMpLe TeXt", result: "EXAMPLE TEXT" }}
         />
+
         <Option
           label="lower case"
           value="lowerCase"
@@ -141,6 +142,46 @@ const Main = () => {
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
           info_example={{ original: "eXaMpLe TeXt", result: "ExAmPlE tExT" }}
+        />
+
+        <Option
+          label="Point to Comma"
+          value="pointToComma"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{ original: "12.345", result: "12,345" }}
+        />
+
+        <Option
+          label="Comma to Point"
+          value="commaToPoint"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{ original: "12,345", result: "12.345" }}
+        />
+
+        <Option
+          label="Remove Numbers"
+          value="removeNumbers"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{ original: "Example1234Text, result: ExampleText" }}
+        />
+
+        <Option
+          label="Remove Non-Numbers"
+          value="removeNonNumeric"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{ original: "+(48) 123-456-789, result: 48123456789" }}
+        />
+
+        <Option
+          label="Remove Spaces"
+          value="removeSpaces"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{ original: "E x amp le, result: Example" }}
         />
       </form>
     </>

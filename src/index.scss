@@ -80,16 +80,14 @@ code {
   padding: 0;
   margin-top: 20px;
   line-height: 20px;
-}
-
-.wrapper__close-button img {
-  width: 24px;
-  opacity: 0.5;
-  cursor: pointer;
-}
-
-.wrapper__close-button img:hover {
-  opacity: 0.8;
+  img {
+    width: 24px;
+    opacity: 0.5;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 
 .wrapper__transfer-button {
@@ -101,16 +99,14 @@ code {
   height: 30px;
   font-size: 40px;
   line-height: 20px;
-}
-
-.wrapper__transfer-button img {
-  width: 24px;
-  opacity: 0.5;
-  cursor: pointer;
-}
-
-.wrapper__transfer-button img:hover {
-  opacity: 0.8;
+  img {
+    width: 24px;
+    opacity: 0.5;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 
 .wrapper__copy-button {
@@ -124,16 +120,14 @@ code {
   padding: 0;
   margin-top: 20px;
   line-height: 20px;
-}
-
-.wrapper__copy-button img {
-  width: 24px;
-  opacity: 0.7;
-  cursor: pointer;
-}
-
-.wrapper__copy-button img:hover {
-  opacity: 0.8;
+  img {
+    width: 24px;
+    opacity: 0.7;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 
 .gray-bg {
@@ -195,6 +189,10 @@ code {
 }
 
 .options-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-height: 200px;
   margin: 0 0 24px 24px;
 }
 

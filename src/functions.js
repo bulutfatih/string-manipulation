@@ -27,6 +27,26 @@ const invertCase = str => {
     .join("");
 };
 
+const pointToComma = str => {
+  return str.replace(/\./g, ",");
+};
+
+const commaToPoint = str => {
+  return str.replace(/,/g, ".");
+};
+
+const removeNumbers = str => {
+  return str.replace(/\d+/g, "");
+};
+
+const removeNonNumberic = str => {
+  return str.replace(/\D/g, "");
+};
+
+const removeSpaces = str => {
+  return str.replace(/\s+/g, "");
+};
+
 const TakeAction = props => {
   const { str, checkedRadioId } = props;
 
@@ -41,6 +61,17 @@ const TakeAction = props => {
       return lowerCase(str);
     case "invertCase":
       return invertCase(str);
+    case "pointToComma":
+      return pointToComma(str);
+    case "commaToPoint":
+      return commaToPoint(str);
+    case "removeNumbers":
+      return removeNumbers(str);
+    case "removeNonNumeric":
+      return removeNonNumberic(str);
+    case "removeSpaces":
+      return removeSpaces(str);
+
     default:
       return "";
   }
