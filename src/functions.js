@@ -1,3 +1,5 @@
+import Esrever from "esrever";
+
 const upperCase = str => {
   return str.normalize().toUpperCase();
 };
@@ -47,6 +49,28 @@ const removeSpaces = str => {
   return str.replace(/\s+/g, "");
 };
 
+const reverseText = str => {
+  return Esrever.reverse(str);
+};
+
+const removeDuplicateWordsDividedByComma = str => {
+  return str
+    .split(",")
+    .filter((item, i, allItems) => {
+      return i === allItems.indexOf(item);
+    })
+    .join(",");
+};
+
+const removeDuplicateLines = str => {
+  return str
+    .split("\n")
+    .filter((item, i, allItems) => {
+      return i === allItems.indexOf(item);
+    })
+    .join("\n");
+};
+
 const TakeAction = props => {
   const { str, checkedRadioId } = props;
 
@@ -71,6 +95,12 @@ const TakeAction = props => {
       return removeNonNumberic(str);
     case "removeSpaces":
       return removeSpaces(str);
+    case "reverseText":
+      return reverseText(str);
+    case "removeDuplicateWordsDividedByComma":
+      return removeDuplicateWordsDividedByComma(str);
+    case "removeDuplicateLines":
+      return removeDuplicateLines(str);
 
     default:
       return "";

@@ -168,6 +168,7 @@ code {
   flex-direction: row;
   span {
     color: #fafafa;
+    white-space: pre-wrap;
   }
   .left {
     display: flex;
@@ -197,7 +198,10 @@ code {
 }
 
 .option-container {
-  margin: 10px;
+  margin: 5px;
+  padding: 10px;
+  border: solid 1px #ccc;
+  border-radius: 4px;
   label {
     display: flex;
     align-items: center;

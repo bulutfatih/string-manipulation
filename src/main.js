@@ -105,7 +105,7 @@ const Main = () => {
 
       <form className="options-form">
         <Option
-          label="UPPER CASE"
+          label="Upper Case"
           value="upperCase"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
@@ -113,7 +113,7 @@ const Main = () => {
         />
 
         <Option
-          label="lower case"
+          label="Lower Case"
           value="lowerCase"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
@@ -129,7 +129,7 @@ const Main = () => {
         />
 
         <Option
-          label="Sentence case"
+          label="Sentence Case"
           value="sentenceCase"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
@@ -137,7 +137,7 @@ const Main = () => {
         />
 
         <Option
-          label="iNVERT cASE"
+          label="Invert Case"
           value="invertCase"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
@@ -165,7 +165,7 @@ const Main = () => {
           value="removeNumbers"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "Example1234Text, result: ExampleText" }}
+          info_example={{ original: "Example1234Text", result: "ExampleText" }}
         />
 
         <Option
@@ -173,7 +173,10 @@ const Main = () => {
           value="removeNonNumeric"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "+(48) 123-456-789, result: 48123456789" }}
+          info_example={{
+            original: "+(48) 123-456-789",
+            result: "48123456789"
+          }}
         />
 
         <Option
@@ -181,7 +184,34 @@ const Main = () => {
           value="removeSpaces"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "E x amp le, result: Example" }}
+          info_example={{ original: "E x amp le", result: "Example" }}
+        />
+
+        <Option
+          label="Reverse Text"
+          value="reverseText"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{ original: "Example", result: "elpmaxE" }}
+        />
+
+        <Option
+          label="Remove Duplicate Words (divided by comma)"
+          value="removeDuplicateWordsDividedByComma"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{ original: "a,b,b,c,d,d", result: "a,b,c,d" }}
+        />
+
+        <Option
+          label="Remove Duplicate Lines"
+          value="removeDuplicateLines"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{
+            original: "example\nexample\ntext",
+            result: "example\ntext"
+          }}
         />
       </form>
     </>
