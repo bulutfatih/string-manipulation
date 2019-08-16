@@ -71,6 +71,14 @@ const removeDuplicateLines = str => {
     .join("\n");
 };
 
+const toMultiline = str => {
+  return str.replace(/[, ]+/g, "\n");
+};
+
+const toOneline = str => {
+  return str.replace(/[\n]+/g, ", ");
+};
+
 const TakeAction = props => {
   const { str, checkedRadioId } = props;
 
@@ -101,6 +109,10 @@ const TakeAction = props => {
       return removeDuplicateWordsDividedByComma(str);
     case "removeDuplicateLines":
       return removeDuplicateLines(str);
+    case "toMultiline":
+      return toMultiline(str);
+    case "toOneline":
+      return toOneline(str);
 
     default:
       return "";

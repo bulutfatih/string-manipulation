@@ -213,6 +213,28 @@ const Main = () => {
             result: "example\ntext"
           }}
         />
+
+        <Option
+          label="One Line to Multiline"
+          value="toMultiline"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{
+            original: "example, text",
+            result: "example\ntext"
+          }}
+        />
+
+        <Option
+          label="Multiline to One Line"
+          value="toOneline"
+          checkedValue={checkedValue}
+          setCheckedValue={setCheckedValue}
+          info_example={{
+            original: "example\ntext",
+            result: "example, text"
+          }}
+        />
       </form>
     </>
   );
