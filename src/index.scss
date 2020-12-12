@@ -198,10 +198,10 @@ code {
 }
 
 .option-container {
-  margin: 5px;
-  padding: 10px;
-  border: solid 1px #ccc;
+  margin: 8px;
+  padding: 16px;
   border-radius: 4px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
   label {
     display: flex;
     align-items: center;
