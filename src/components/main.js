@@ -1,20 +1,23 @@
-import React, { useState, useEffect, useRef } from "react";
-import TakeAction from "./functions";
-import CloseIcon from "./images/close-button.svg";
-import LeftArrowIcon from "./images/left-arrow.svg";
-import CopyIcon from "./images/copy.svg";
+import React, { useEffect, useRef, useState } from "react";
+
 import Tooltip from "react-tooltip-lite";
 import Option from "./option";
+import TakeAction from "../functions";
+
+import CloseIcon from "../images/close-button.svg";
+import CopyIcon from "../images/copy.svg";
+import LeftArrowIcon from "../images/left-arrow.svg";
+import GitHubIcon from "../images/github.png";
+
+const SAMPLE_INPUT = "i AM a CrAzy StrINg, MAkE mE nORMal!";
 
 const Main = () => {
   const [checkedValue, setCheckedValue] = useState("");
-  const [inputText, setInputText] = useState(
-    "i AM a CrAzy StrINg, MAkE mE nORMal!"
-  );
+  const [inputText, setInputText] = useState(SAMPLE_INPUT);
   const [outputText, setOutputText] = useState("");
   const outputTextRef = useRef(null);
 
-  const copyToClipboard = e => {
+  const copyToClipboard = (e) => {
     outputTextRef.current.select();
     document.execCommand("copy");
     window.getSelection().removeAllRanges();
@@ -24,7 +27,7 @@ const Main = () => {
     if (inputText && checkedValue) {
       const result = TakeAction({
         str: inputText,
-        checkedRadioId: checkedValue
+        checkedRadioId: checkedValue,
       });
       setOutputText(result);
     } else setOutputText("");
@@ -40,7 +43,7 @@ const Main = () => {
               <textarea
                 className="wrapper__textarea"
                 value={inputText}
-                onChange={e => setInputText(e.target.value)}
+                onChange={(e) => setInputText(e.target.value)}
               />
             </div>
             <div className="wrapper__right">
@@ -105,137 +108,146 @@ const Main = () => {
 
       <form className="options-form">
         <Option
-          label="Upper Case"
+          label="Upper case"
           value="upperCase"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "eXaMpLe TeXt", result: "EXAMPLE TEXT" }}
+          infoSample={{ original: "eXaMpLe TeXt", result: "EXAMPLE TEXT" }}
         />
 
         <Option
-          label="Lower Case"
+          label="Lower case"
           value="lowerCase"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "eXaMpLe TeXt", result: "example text" }}
+          infoSample={{ original: "eXaMpLe TeXt", result: "example text" }}
         />
 
         <Option
-          label="Title Case"
+          label="Title case"
           value="titleCase"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "eXaMpLe TeXt", result: "Example Text" }}
+          infoSample={{ original: "eXaMpLe TeXt", result: "Example Text" }}
         />
 
         <Option
-          label="Sentence Case"
+          label="Sentence case"
           value="sentenceCase"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "eXaMpLe TeXt", result: "Example text" }}
+          infoSample={{ original: "eXaMpLe TeXt", result: "Example text" }}
         />
 
         <Option
-          label="Invert Case"
+          label="Invert case"
           value="invertCase"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "eXaMpLe TeXt", result: "ExAmPlE tExT" }}
+          infoSample={{ original: "eXaMpLe TeXt", result: "ExAmPlE tExT" }}
         />
 
         <Option
-          label="Point to Comma"
+          label="Point to comma"
           value="pointToComma"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "12.345", result: "12,345" }}
+          infoSample={{ original: "12.345", result: "12,345" }}
         />
 
         <Option
-          label="Comma to Point"
+          label="Comma to point"
           value="commaToPoint"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "12,345", result: "12.345" }}
+          infoSample={{ original: "12,345", result: "12.345" }}
         />
 
         <Option
-          label="Remove Numbers"
+          label="Remove numbers"
           value="removeNumbers"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "Example1234Text", result: "ExampleText" }}
+          infoSample={{ original: "Example1234Text", result: "ExampleText" }}
         />
 
         <Option
-          label="Remove Non-Numbers"
+          label="Remove non-numbers"
           value="removeNonNumeric"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{
+          infoSample={{
             original: "+(48) 123-456-789",
-            result: "48123456789"
+            result: "48123456789",
           }}
         />
 
         <Option
-          label="Remove Spaces"
+          label="Remove spaces"
           value="removeSpaces"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "E x amp le", result: "Example" }}
+          infoSample={{ original: "E x amp le", result: "Example" }}
         />
 
         <Option
-          label="Reverse Text"
+          label="Reverse text"
           value="reverseText"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "Example", result: "elpmaxE" }}
+          infoSample={{ original: "Example", result: "elpmaxE" }}
         />
 
         <Option
-          label="Remove Duplicate Words (divided by comma)"
+          label="Remove duplicate words (divided by comma)"
           value="removeDuplicateWordsDividedByComma"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{ original: "a,b,b,c,d,d", result: "a,b,c,d" }}
+          infoSample={{ original: "a,b,b,c,d,d", result: "a,b,c,d" }}
         />
 
         <Option
-          label="Remove Duplicate Lines"
+          label="Remove duplicate lines"
           value="removeDuplicateLines"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{
+          infoSample={{
             original: "example\nexample\ntext",
-            result: "example\ntext"
+            result: "example\ntext",
           }}
         />
 
         <Option
-          label="One Line to Multiline"
-          value="toMultiline"
+          label="Single line to multiple lines"
+          value="toMultipleLines"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{
+          infoSample={{
             original: "example, text",
-            result: "example\ntext"
+            result: "example\ntext",
           }}
         />
 
         <Option
-          label="Multiline to One Line"
-          value="toOneline"
+          label="Multiple lines to single line"
+          value="toSingleline"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
-          info_example={{
+          infoSample={{
             original: "example\ntext",
-            result: "example, text"
+            result: "example, text",
           }}
         />
       </form>
+      <div className="github">
+        <a
+          href="https://github.com/bulutfatih/string-manipulation"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img alt="" src={GitHubIcon} />
+        </a>
+      </div>
     </>
   );
 };

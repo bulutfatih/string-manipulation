@@ -1,8 +1,9 @@
 import React from "react";
 import Tooltip from "react-tooltip-lite";
-import ConvertIcon from "./images/convert.svg";
 
-const InfoTemplate = example => {
+import ConvertIcon from "../images/convert.svg";
+
+const InfoTemplate = (example) => {
   const { original, result } = example;
   return (
     <div className="info-template__inner-container">
@@ -19,7 +20,7 @@ const InfoTemplate = example => {
   );
 };
 
-const Info = props => {
+const Info = (props) => {
   const { example } = props;
   return (
     <div className="info-template__container">

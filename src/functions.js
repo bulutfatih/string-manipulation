@@ -1,59 +1,59 @@
 import Esrever from "esrever";
 
-const upperCase = str => {
+const upperCase = (str) => {
   return str.normalize().toUpperCase();
 };
 
-const sentenceCase = str => {
+const sentenceCase = (str) => {
   return lowerCase(str)
-    .replace(/[a-z]/i, function(letter) {
+    .replace(/[a-z]/i, function (letter) {
       return letter.toUpperCase();
     })
     .trim();
 };
 
-const titleCase = str => {
-  return str.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase());
+const titleCase = (str) => {
+  return str.toLowerCase().replace(/\b(\w)/g, (s) => s.toUpperCase());
 };
 
-const lowerCase = str => {
+const lowerCase = (str) => {
   return str.normalize().toLowerCase();
 };
 
-const invertCase = str => {
+const invertCase = (str) => {
   return str
     .split("")
-    .map(function(c) {
+    .map(function (c) {
       return c === c.toUpperCase() ? c.toLowerCase() : c.toUpperCase();
     })
     .join("");
 };
 
-const pointToComma = str => {
+const pointToComma = (str) => {
   return str.replace(/\./g, ",");
 };
 
-const commaToPoint = str => {
+const commaToPoint = (str) => {
   return str.replace(/,/g, ".");
 };
 
-const removeNumbers = str => {
+const removeNumbers = (str) => {
   return str.replace(/\d+/g, "");
 };
 
-const removeNonNumberic = str => {
+const removeNonNumberic = (str) => {
   return str.replace(/\D/g, "");
 };
 
-const removeSpaces = str => {
+const removeSpaces = (str) => {
   return str.replace(/\s+/g, "");
 };
 
-const reverseText = str => {
+const reverseText = (str) => {
   return Esrever.reverse(str);
 };
 
-const removeDuplicateWordsDividedByComma = str => {
+const removeDuplicateWordsDividedByComma = (str) => {
   return str
     .split(",")
     .filter((item, i, allItems) => {
@@ -62,7 +62,7 @@ const removeDuplicateWordsDividedByComma = str => {
     .join(",");
 };
 
-const removeDuplicateLines = str => {
+const removeDuplicateLines = (str) => {
   return str
     .split("\n")
     .filter((item, i, allItems) => {
@@ -71,15 +71,15 @@ const removeDuplicateLines = str => {
     .join("\n");
 };
 
-const toMultiline = str => {
+const toMultipleLines = (str) => {
   return str.replace(/[, ]+/g, "\n");
 };
 
-const toOneline = str => {
+const toSingleLine = (str) => {
   return str.replace(/[\n]+/g, ", ");
 };
 
-const TakeAction = props => {
+const TakeAction = (props) => {
   const { str, checkedRadioId } = props;
 
   switch (checkedRadioId) {
@@ -109,10 +109,10 @@ const TakeAction = props => {
       return removeDuplicateWordsDividedByComma(str);
     case "removeDuplicateLines":
       return removeDuplicateLines(str);
-    case "toMultiline":
-      return toMultiline(str);
-    case "toOneline":
-      return toOneline(str);
+    case "toMultipleLines":
+      return toMultipleLines(str);
+    case "toSingleLine":
+      return toSingleLine(str);
 
     default:
       return "";

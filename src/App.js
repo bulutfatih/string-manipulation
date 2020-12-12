@@ -1,11 +1,8 @@
-import React from 'react';
-import './App.css';
-import Main from './main';
+import React from "react";
+import Main from "./components/main";
 
 function App() {
-  return (
-    <Main/>
-  );
+  return <Main />;
 }
 
 export default App;

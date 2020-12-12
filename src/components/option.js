@@ -1,8 +1,8 @@
 import React from "react";
 import Info from "./info";
 
-const Option = props => {
-  const { value, label, checkedValue, setCheckedValue, info_example } = props;
+const Option = (props) => {
+  const { value, label, checkedValue, setCheckedValue, infoSample } = props;
   return (
     <div className="option-container">
       <label>
@@ -12,7 +12,7 @@ const Option = props => {
           checked={checkedValue === value}
           onChange={() => setCheckedValue(value)}
         />
-        <Info example={info_example} />
+        <Info example={infoSample} />
         {label}
       </label>
     </div>
