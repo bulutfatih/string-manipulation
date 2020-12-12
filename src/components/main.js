@@ -230,7 +230,7 @@ const Main = () => {
 
         <Option
           label="Multiple lines to single line"
-          value="toSingleline"
+          value="toSingleLine"
           checkedValue={checkedValue}
           setCheckedValue={setCheckedValue}
           infoSample={{

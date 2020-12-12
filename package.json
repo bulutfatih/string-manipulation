@@ -2,6 +2,7 @@
   "name": "string-manipulation",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/string-manipulation",
   "dependencies": {
     "esrever": "^0.2.0",
     "node-sass": "4.14.1",

@@ -76,7 +76,7 @@ const toMultipleLines = (str) => {
 };
 
 const toSingleLine = (str) => {
-  return str.replace(/[\n]+/g, ", ");
+  return str.replace(/[\n]+/g, " ");
 };
 
 const TakeAction = (props) => {
