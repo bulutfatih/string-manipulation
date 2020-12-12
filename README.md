@@ -2,7 +2,7 @@
 
 This toolset helps you to manipulate, convert, correct a text. You can play with your text and style them. It can be applied to the string arrays too. Here is a live demo and features that is ready to use!
 
-#### Live Demo: https://bulutfatih.com/demo/string-manipulation
+#### Live Demo: https://bulutfatih.com/string-manipulation
 
 - Case
   - Upper case
