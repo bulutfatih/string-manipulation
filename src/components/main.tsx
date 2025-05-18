@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import TakeAction from "../functions";
 import Tooltip from "./Tooltip";
-import Option from "./option";
+import Option from "./Option";
 
 import CloseIcon from "../images/close-button.svg";
 import CopyIcon from "../images/copy.svg";
