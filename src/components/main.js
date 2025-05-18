@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import Tooltip from "react-tooltip-lite";
+import Tooltip from "./Tooltip";
 import Option from "./option";
 import TakeAction from "../functions";
 
@@ -48,7 +48,7 @@ const Main = () => {
             </div>
             <div className="wrapper__right">
               <div className="wrapper__close-button">
-                <Tooltip content="Clear" direction="down">
+                <Tooltip content="Clear" placement="bottom">
                   <img
                     alt=""
                     src={CloseIcon}
@@ -59,7 +59,7 @@ const Main = () => {
               <div className="wrapper__transfer-button">
                 <Tooltip
                   content="Transfer the result to the input"
-                  direction="down"
+                  placement="bottom"
                 >
                   <img
                     alt=""
@@ -85,14 +85,14 @@ const Main = () => {
             </div>
             <div className="wrapper__right">
               <div className="wrapper__copy-button">
-                <Tooltip content="Copy to clipboard" direction="down">
+                <Tooltip content="Copy to clipboard" placement="bottom">
                   <img alt="" src={CopyIcon} onClick={copyToClipboard} />
                 </Tooltip>
               </div>
               <div className="wrapper__transfer-button">
                 <Tooltip
                   content="Transfer the result to the input"
-                  direction="down"
+                  placement="bottom"
                 >
                   <img
                     alt=""

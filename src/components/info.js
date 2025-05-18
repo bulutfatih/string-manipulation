@@ -1,5 +1,5 @@
 import React from "react";
-import Tooltip from "react-tooltip-lite";
+import Tooltip from "./Tooltip";
 
 import ConvertIcon from "../images/convert.svg";
 
@@ -24,7 +24,7 @@ const Info = (props) => {
   const { example } = props;
   return (
     <div className="info-template__container">
-      <Tooltip content={InfoTemplate(example)} direction="below">
+      <Tooltip content={InfoTemplate(example)} placement="bottom">
         <button className="info-template__button" disabled>
           i
         </button>

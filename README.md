@@ -29,8 +29,8 @@ This toolset helps you to manipulate, convert, correct a text. You can play with
 ## Quick Start 🚀
 
 ```bash
-yarn
-yarn start
+npm install
+npm run start
 ```
 
 Check in browser on [http://localhost:3000/](http://localhost:3000/)
