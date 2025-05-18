@@ -1,23 +1,21 @@
 import type React from "react";
-import Info from "./info";
+import Info from "./Info";
 
 type OptionProps = {
 	label: string;
+	infoSample: { original: string; result: string };
 	value: string;
 	checkedValue: string;
 	setCheckedValue: (value: string) => void;
-	infoSample: { original: string; result: string };
 };
 
 const Option: React.FC<OptionProps> = ({ label, value, checkedValue, setCheckedValue, infoSample }) => {
 	return (
-		<div className="option-container">
-			<label>
-				<input type="radio" value={value} checked={checkedValue === value} onChange={() => setCheckedValue(value)} />
-				<Info example={infoSample} />
-				{label}
-			</label>
-		</div>
+		<label className="option-container">
+			<input type="radio" value={value} checked={checkedValue === value} onChange={() => setCheckedValue(value)} />
+			<Info example={infoSample} />
+			{label}
+		</label>
 	);
 };
 

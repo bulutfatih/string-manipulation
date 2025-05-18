@@ -75,44 +75,42 @@ const toSingleLine = (str: string): string => {
 	return str.replace(/[\n]+/g, " ");
 };
 
-const TakeAction = (props: { str: string; checkedRadioId: string }): string => {
-	const { str, checkedRadioId } = props;
-
-	switch (checkedRadioId) {
+const getFunction = (functionId: string, inputText: string): string => {
+	switch (functionId) {
 		case "upperCase":
-			return upperCase(str);
+			return upperCase(inputText);
 		case "sentenceCase":
-			return sentenceCase(str);
+			return sentenceCase(inputText);
 		case "titleCase":
-			return titleCase(str);
+			return titleCase(inputText);
 		case "lowerCase":
-			return lowerCase(str);
+			return lowerCase(inputText);
 		case "invertCase":
-			return invertCase(str);
+			return invertCase(inputText);
 		case "pointToComma":
-			return pointToComma(str);
+			return pointToComma(inputText);
 		case "commaToPoint":
-			return commaToPoint(str);
+			return commaToPoint(inputText);
 		case "removeNumbers":
-			return removeNumbers(str);
+			return removeNumbers(inputText);
 		case "removeNonNumeric":
-			return removeNonNumberic(str);
+			return removeNonNumberic(inputText);
 		case "removeSpaces":
-			return removeSpaces(str);
+			return removeSpaces(inputText);
 		case "reverseText":
-			return reverseText(str);
+			return reverseText(inputText);
 		case "removeDuplicateWordsDividedByComma":
-			return removeDuplicateWordsDividedByComma(str);
+			return removeDuplicateWordsDividedByComma(inputText);
 		case "removeDuplicateLines":
-			return removeDuplicateLines(str);
+			return removeDuplicateLines(inputText);
 		case "toMultipleLines":
-			return toMultipleLines(str);
+			return toMultipleLines(inputText);
 		case "toSingleLine":
-			return toSingleLine(str);
+			return toSingleLine(inputText);
 
 		default:
 			return "";
 	}
 };
 
-export default TakeAction;
+export default getFunction;
