@@ -1,46 +1,58 @@
 # String Manipulation
 
-This toolset helps you to manipulate, convert, correct a text. You can play with your text and style them. It can be applied to the string arrays too. Here is a live demo and features that is ready to use!
+A modern, minimal, and fast web app for manipulating strings in various ways. Built with React, TypeScript, and Vite.
 
-#### Live Demo: https://bulutfatih.com/string-manipulation
+## Features
+- Convert text to upper/lower/title/sentence case
+- Invert case, remove numbers/non-numbers/spaces
+- Replace points/commas, remove duplicates, reverse text
+- Minimal tooltips, instant UI
 
-- Case
-  - Upper case
-  - Lower case
-  - Title case
-  - Sentence case
-  - Invert case
-- Point to comma
-- Comma to point
-- Remove numbers
-- Remove non-numbers
-- Remove spaces
-- Reverse text
-- Remove duplicate words (divided by comma)
-- Remove duplicate lines
-- One line to multiline
-- Multiple lines to single line
-- Single line to multiple lines
+## Tech Stack
+- [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/) for fast dev/build
+- [Biome](https://biomejs.dev/) for formatting and linting
+- [Sass](https://sass-lang.com/) for styling
 
-## Tech
+## Getting Started
 
-- React
+### Prerequisites
+- Node.js (v18+ recommended)
 
-## Quick Start 🚀
-
+### Setup
 ```bash
 npm install
-npm run start
 ```
 
-Check in browser on [http://localhost:3000/](http://localhost:3000/)
+### Development
+```bash
+npm run dev
+```
 
-## App Info
+### Build
+```bash
+npm run build
+```
 
-### Author
+### Preview Production Build
+```bash
+npm run preview
+```
 
-Fatih Bulut (@bulutfatih)
+### Lint & Format
+```bash
+npm run check
+npm run check:fix
+```
 
-### License
+## Contributing
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
 
-This project is licensed under the MIT License
+1. Fork the repo
+2. Create your feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a pull request
+
+## License
+[MIT](LICENSE)

@@ -1,13 +1,25 @@
-import React, { useState, useRef } from "react";
 import {
-  useFloating,
+  FloatingPortal,
+  type Placement,
   offset,
+  useFloating,
   useHover,
   useInteractions,
-  FloatingPortal,
 } from "@floating-ui/react";
+import type React from "react";
+import { type ReactNode, useState } from "react";
 
-const Tooltip = ({ content, children, placement = "top" }) => {
+type TooltipProps = {
+  content: ReactNode;
+  children: ReactNode;
+  placement?: Placement;
+};
+
+const Tooltip: React.FC<TooltipProps> = ({
+  content,
+  children,
+  placement = "top",
+}) => {
   const [open, setOpen] = useState(false);
   const { refs, floatingStyles, context } = useFloating({
     open,
@@ -21,13 +33,9 @@ const Tooltip = ({ content, children, placement = "top" }) => {
 
   return (
     <>
-      <span
-        ref={refs.setReference}
-        {...getReferenceProps()}
-        style={{ display: "inline-block" }}
-      >
+      <div ref={refs.setReference} {...getReferenceProps()} style={{}}>
         {children}
-      </span>
+      </div>
       {open && (
         <FloatingPortal>
           <div

@@ -1,26 +1,29 @@
-import React, { useEffect, useRef, useState } from "react";
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
 
+import TakeAction from "../functions";
 import Tooltip from "./Tooltip";
 import Option from "./option";
-import TakeAction from "../functions";
 
 import CloseIcon from "../images/close-button.svg";
 import CopyIcon from "../images/copy.svg";
-import LeftArrowIcon from "../images/left-arrow.svg";
 import GitHubIcon from "../images/github.png";
+import LeftArrowIcon from "../images/left-arrow.svg";
 
 const SAMPLE_INPUT = "i AM a CrAzy StrINg, MAkE mE nORMal!";
 
-const Main = () => {
-  const [checkedValue, setCheckedValue] = useState("");
-  const [inputText, setInputText] = useState(SAMPLE_INPUT);
-  const [outputText, setOutputText] = useState("");
-  const outputTextRef = useRef(null);
+const Main: React.FC = () => {
+  const [checkedValue, setCheckedValue] = useState<string>("");
+  const [inputText, setInputText] = useState<string>(SAMPLE_INPUT);
+  const [outputText, setOutputText] = useState<string>("");
+  const outputTextRef = useRef<HTMLTextAreaElement>(null);
 
-  const copyToClipboard = (e) => {
-    outputTextRef.current.select();
-    document.execCommand("copy");
-    window.getSelection().removeAllRanges();
+  const copyToClipboard = (e: React.MouseEvent<HTMLImageElement>) => {
+    if (outputTextRef.current) {
+      outputTextRef.current.select();
+      document.execCommand("copy");
+      window.getSelection()?.removeAllRanges();
+    }
   };
 
   useEffect(() => {

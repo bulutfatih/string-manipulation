@@ -1,8 +1,21 @@
-import React from "react";
+import type React from "react";
 import Info from "./info";
 
-const Option = (props) => {
-  const { value, label, checkedValue, setCheckedValue, infoSample } = props;
+type OptionProps = {
+  label: string;
+  value: string;
+  checkedValue: string;
+  setCheckedValue: (value: string) => void;
+  infoSample: { original: string; result: string };
+};
+
+const Option: React.FC<OptionProps> = ({
+  label,
+  value,
+  checkedValue,
+  setCheckedValue,
+  infoSample,
+}) => {
   return (
     <div className="option-container">
       <label>

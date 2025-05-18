@@ -150,6 +150,7 @@ code {
 }
 
 .info-template__button {
+  display: inline-block;
   background: #0d93bf;
   color: #fff;
   font-size: 12px;
@@ -198,12 +199,12 @@ code {
 
 .option-container {
   margin: 8px;
-  padding: 16px;
   border-radius: 4px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
   label {
     display: flex;
     align-items: center;
+    padding: 16px;
   }
 }
 

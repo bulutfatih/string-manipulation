@@ -1,35 +1,29 @@
 {
-  "name": "string-manipulation",
-  "version": "0.1.0",
-  "private": true,
-  "homepage": "/string-manipulation",
-  "dependencies": {
-    "esrever": "^0.2.0",
-    "sass": "^1.69.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "@floating-ui/react": "^0.26.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "string-manipulation",
+	"version": "0.1.0",
+	"private": true,
+	"homepage": "/string-manipulation",
+	"dependencies": {
+		"@floating-ui/react": "0.27.8",
+		"esrever": "0.2.0",
+		"react": "19.1.0",
+		"react-dom": "19.1.0",
+		"sass": "1.89.0"
+	},
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "biome check .",
+		"check:fix": "biome check --write ."
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/esrever": "0.2.3",
+		"@types/react": "19.1.4",
+		"@types/react-dom": "19.1.5",
+		"@vitejs/plugin-react": "4.4.1",
+		"typescript": "5.8.3",
+		"vite": "6.3.5"
+	}
 }

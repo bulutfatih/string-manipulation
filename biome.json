@@ -1,0 +1,19 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.4.0/schema.json",
+	"formatter": {
+		"enabled": true,
+		"lineWidth": 120
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"a11y": {
+				"useKeyWithClickEvents": "off"
+			}
+		}
+	},
+	"files": {
+		"ignore": ["node_modules", "dist", ".vite"]
+	}
+}
