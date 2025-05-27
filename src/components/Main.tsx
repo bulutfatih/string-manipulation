@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 import getFunction from "../functions";
 import Option from "./Option";
-import Tooltip from "./Tooltip";
+import Button from "./Button";
 
 import CloseIcon from "../images/close-button.svg";
 import CopyIcon from "../images/copy.svg";
@@ -19,7 +19,7 @@ const Main: React.FC = () => {
 	const [showNotification, setShowNotification] = useState<boolean>(false);
 	const outputRef = useRef<HTMLTextAreaElement>(null);
 
-	const copyToClipboard = (e: React.MouseEvent<HTMLImageElement>) => {
+	const copyToClipboard = (e: React.MouseEvent) => {
 		if (outputRef.current) {
 			outputRef.current.select();
 			document.execCommand("copy");
@@ -56,16 +56,20 @@ const Main: React.FC = () => {
 							<textarea className="wrapper__textarea" value={input} onChange={(e) => setInput(e.target.value)} />
 						</div>
 						<div className="wrapper__right">
-							<Tooltip content="Clear" placement="bottom" className="wrapper__close-button">
-								<img alt="" src={CloseIcon} onClick={() => setInput("")} />
-							</Tooltip>
-							<Tooltip
-								content="Transfer the result to the input"
-								placement="bottom"
-								className="wrapper__transfer-button"
+							<Button 
+								tooltip="Clear" 
+								className="wrapper__close-button" 
+								onClick={() => setInput("")}
 							>
-								<img alt="" src={LeftArrowIcon} onClick={() => setInput(output)} />
-							</Tooltip>
+								<img alt="" src={CloseIcon} />
+							</Button>
+							<Button
+								tooltip="Transfer the result to the input"
+								className="wrapper__transfer-button"
+								onClick={() => setInput(output)}
+							>
+								<img alt="" src={LeftArrowIcon} />
+							</Button>
 						</div>
 					</div>
 				</div>
@@ -77,16 +81,20 @@ const Main: React.FC = () => {
 							<textarea className="wrapper__textarea gray-bg" value={output} ref={outputRef} readOnly />
 						</div>
 						<div className="wrapper__right">
-							<Tooltip content="Copy to clipboard" placement="bottom" className="wrapper__copy-button">
-								<img alt="" src={CopyIcon} onClick={copyToClipboard} />
-							</Tooltip>
-							<Tooltip
-								content="Transfer the result to the input"
-								placement="bottom"
-								className="wrapper__transfer-button"
+							<Button 
+								tooltip="Copy to clipboard" 
+								className="wrapper__copy-button" 
+								onClick={copyToClipboard}
 							>
-								<img alt="" src={LeftArrowIcon} onClick={() => setInput(output)} />
-							</Tooltip>
+								<img alt="" src={CopyIcon} />
+							</Button>
+							<Button
+								tooltip="Transfer the result to the input"
+								className="wrapper__transfer-button"
+								onClick={() => setInput(output)}
+							>
+								<img alt="" src={LeftArrowIcon} />
+							</Button>
 						</div>
 					</div>
 				</div>

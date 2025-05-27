@@ -24,7 +24,6 @@ body {
 
 .title {
   font-size: 28px;
-  margin: 20px 20px 20px 52px;
   color: #2c3e50;
   text-shadow: 
     1px 1px 0px rgba(255, 255, 255, 0.8),
@@ -40,7 +39,8 @@ body {
 .outer-container {
   display: flex;
   flex-direction: row;
-  padding: 20px;
+  margin: 20px;
+  gap: 20px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -54,13 +54,14 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
+  // margin: 24px;
+  gap: 24px;
 }
 
 .wrapper {
   display: flex;
   flex-direction: row;
   border-radius: 12px;
-  margin: 15px 24px 40px 24px;
   padding: 0;
   overflow: hidden;
   background: linear-gradient(145deg, #f8f8f8, #e0e0e0);
@@ -309,7 +310,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 0 0 24px 24px;
+  margin: 20px;
   background: linear-gradient(145deg, #f8f8f8, #e8e8e8);
   padding: 20px;
   border-radius: 12px;
