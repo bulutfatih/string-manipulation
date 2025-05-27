@@ -34,7 +34,7 @@ const Main: React.FC = () => {
 	}, [input, selectedFunction]);
 
 	return (
-		<>
+		<div className="main">
 			<div className="outer-container">
 				<div className="inner-container">
 					<span className="title">Original text</span>
@@ -217,7 +217,7 @@ const Main: React.FC = () => {
 					<img alt="" src={GitHubIcon} />
 				</a>
 			</div>
-		</>
+		</div>
 	);
 };
 
