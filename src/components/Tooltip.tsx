@@ -3,12 +3,13 @@ import type React from "react";
 import { type ReactNode, useState } from "react";
 
 type TooltipProps = {
+	className?: string;
 	content: ReactNode;
 	children: ReactNode;
 	placement?: Placement;
 };
 
-const Tooltip: React.FC<TooltipProps> = ({ content, children, placement = "top" }) => {
+const Tooltip: React.FC<TooltipProps> = ({ content, children, placement = "top", className }) => {
 	const [open, setOpen] = useState(false);
 	const { refs, floatingStyles, context } = useFloating({
 		open,
@@ -22,7 +23,7 @@ const Tooltip: React.FC<TooltipProps> = ({ content, children, placement = "top" 
 
 	return (
 		<>
-			<div ref={refs.setReference} {...getReferenceProps()} style={{}}>
+			<div ref={refs.setReference} {...getReferenceProps()} className={className}>
 				{children}
 			</div>
 			{open && (

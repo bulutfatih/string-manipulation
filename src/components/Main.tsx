@@ -43,16 +43,16 @@ const Main: React.FC = () => {
 							<textarea className="wrapper__textarea" value={input} onChange={(e) => setInput(e.target.value)} />
 						</div>
 						<div className="wrapper__right">
-							<div className="wrapper__close-button">
-								<Tooltip content="Clear" placement="bottom">
-									<img alt="" src={CloseIcon} onClick={() => setInput("")} />
-								</Tooltip>
-							</div>
-							<div className="wrapper__transfer-button">
-								<Tooltip content="Transfer the result to the input" placement="bottom">
-									<img alt="" src={LeftArrowIcon} onClick={() => setInput(output)} />
-								</Tooltip>
-							</div>
+							<Tooltip content="Clear" placement="bottom" className="wrapper__close-button">
+								<img alt="" src={CloseIcon} onClick={() => setInput("")} />
+							</Tooltip>
+							<Tooltip
+								content="Transfer the result to the input"
+								placement="bottom"
+								className="wrapper__transfer-button"
+							>
+								<img alt="" src={LeftArrowIcon} onClick={() => setInput(output)} />
+							</Tooltip>
 						</div>
 					</div>
 				</div>
@@ -64,16 +64,16 @@ const Main: React.FC = () => {
 							<textarea className="wrapper__textarea gray-bg" value={output} ref={outputRef} readOnly />
 						</div>
 						<div className="wrapper__right">
-							<div className="wrapper__copy-button">
-								<Tooltip content="Copy to clipboard" placement="bottom">
-									<img alt="" src={CopyIcon} onClick={copyToClipboard} />
-								</Tooltip>
-							</div>
-							<div className="wrapper__transfer-button">
-								<Tooltip content="Transfer the result to the input" placement="bottom">
-									<img alt="" src={LeftArrowIcon} onClick={() => setInput(output)} />
-								</Tooltip>
-							</div>
+							<Tooltip content="Copy to clipboard" placement="bottom" className="wrapper__copy-button">
+								<img alt="" src={CopyIcon} onClick={copyToClipboard} />
+							</Tooltip>
+							<Tooltip
+								content="Transfer the result to the input"
+								placement="bottom"
+								className="wrapper__transfer-button"
+							>
+								<img alt="" src={LeftArrowIcon} onClick={() => setInput(output)} />
+							</Tooltip>
 						</div>
 					</div>
 				</div>
