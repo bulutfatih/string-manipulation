@@ -16,6 +16,7 @@ const Main: React.FC = () => {
 	const [selectedFunction, setSelectedFunction] = useState<string>("");
 	const [input, setInput] = useState<string>(SAMPLE_INPUT);
 	const [output, setOutput] = useState<string>("");
+	const [showNotification, setShowNotification] = useState<boolean>(false);
 	const outputRef = useRef<HTMLTextAreaElement>(null);
 
 	const copyToClipboard = (e: React.MouseEvent<HTMLImageElement>) => {
@@ -23,6 +24,12 @@ const Main: React.FC = () => {
 			outputRef.current.select();
 			document.execCommand("copy");
 			window.getSelection()?.removeAllRanges();
+			
+			// Show notification
+			setShowNotification(true);
+			setTimeout(() => {
+				setShowNotification(false);
+			}, 2000);
 		}
 	};
 
@@ -35,6 +42,12 @@ const Main: React.FC = () => {
 
 	return (
 		<div className="main">
+			{showNotification && (
+				<div className="notification">
+					✓ Copied to clipboard!
+				</div>
+			)}
+			
 			<div className="outer-container">
 				<div className="inner-container">
 					<span className="title">Original text</span>

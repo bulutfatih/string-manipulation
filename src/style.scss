@@ -364,3 +364,50 @@ body {
     }
   }
 }
+
+.notification {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  background: linear-gradient(145deg, #50c878, #3ea65c);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  border: 2px outset #50c878;
+  box-shadow: 
+    5px 5px 15px rgba(0, 0, 0, 0.4),
+    inset 1px 1px 3px rgba(255, 255, 255, 0.3);
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  animation: slideInBounce 0.5s ease-out, fadeOut 0.5s ease-in 1.5s forwards;
+  user-select: none;
+}
+
+@keyframes slideInBounce {
+  0% {
+    transform: translateX(100%) scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-10px) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
