@@ -82,7 +82,7 @@ const Main: React.FC = () => {
 						</div>
 						<div className="wrapper__right">
 							<Button 
-								tooltip="Copy to clipboard" 
+								tooltip="Copy" 
 								className="wrapper__copy-button" 
 								onClick={copyToClipboard}
 							>

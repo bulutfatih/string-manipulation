@@ -38,11 +38,11 @@ body {
 }
 
 .title {
-  font-size: 28px;
+  position: absolute;
+  top: -17px;
+  left: 36px;
+  font-size: 12px;
   color: #2F1B14;
-  text-shadow: 
-    1px 1px 0px rgba(255, 228, 181, 0.8),
-    2px 2px 4px rgba(0, 0, 0, 0.6);
   font-weight: bold;
   background: 
     linear-gradient(145deg, #DEB887, #CD853F),
@@ -53,13 +53,11 @@ body {
       rgba(139, 69, 19, 0.2) 2px,
       rgba(139, 69, 19, 0.2) 4px
     );
-  padding: 12px 20px;
-  border-radius: 8px;
+  padding: 0 4px;
+  border-radius: 8px 8px 0 0;
   border: 3px ridge #A0522D;
+  border-bottom: none;
   display: inline-block;
-  box-shadow: 
-    inset 1px 1px 3px rgba(255, 228, 181, 0.7),
-    3px 3px 8px rgba(0, 0, 0, 0.4);
 }
 
 .outer-container {
@@ -77,6 +75,7 @@ body {
 }
 
 .inner-container {
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
