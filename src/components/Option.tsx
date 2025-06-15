@@ -10,9 +10,10 @@ type OptionProps = {
 };
 
 const Option: React.FC<OptionProps> = ({ label, value, checkedValue, setCheckedValue, infoSample }) => {
+	const isSelected = checkedValue === value;
 	return (
-		<label className="option-container">
-			<input type="radio" value={value} checked={checkedValue === value} onChange={() => setCheckedValue(value)} />
+		<label className={`option-container${isSelected ? ' selected' : ''}`}>
+			<input type="radio" value={value} checked={isSelected} onChange={() => setCheckedValue(value)} style={{ display: 'none' }} />
 			<Info example={infoSample} />
 			{label}
 		</label>
