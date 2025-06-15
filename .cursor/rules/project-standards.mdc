@@ -1,0 +1,161 @@
+# Project Standards and Conventions
+
+## Component File Naming
+- All React component files must use PascalCase naming (e.g., `Option.tsx`, `Button.tsx`, `Main.tsx`)
+- Component file names should match the component name exactly
+- Avoid lowercase component file names to prevent case sensitivity issues in Git
+- Example: Component `MyComponent` should be in file `MyComponent.tsx`
+
+## CSS/SCSS Class Naming - BEM Methodology
+- Use BEM (Block Element Modifier) naming convention for all CSS classes
+- Format: `block__element--modifier`
+- Block: Standalone entity that is meaningful on its own (e.g., `option`, `button`, `form`)
+- Element: Part of a block that has no standalone meaning (e.g., `option__label`, `button__icon`)
+- Modifier: Flag on blocks or elements for appearance/behavior (e.g., `option--selected`, `button--disabled`)
+
+### BEM Examples:
+```scss
+.option {
+  // Block styles
+}
+
+.option__label {
+  // Element styles
+}
+
+.option__info {
+  // Element styles
+}
+
+.option--selected {
+  // Modifier styles for selected state
+}
+
+.button {
+  // Block styles
+}
+
+.button__icon {
+  // Element styles
+}
+
+.button--primary {
+  // Modifier styles
+}
+```
+
+## CSS Variables for Design System
+- Use CSS custom properties (variables) for all colors, spacing, and design tokens
+- Define variables in `:root` for global access
+- Group variables by category (colors, spacing, typography, etc.)
+- Use semantic naming for variables
+
+### CSS Variables Structure:
+```scss
+:root {
+  // Colors
+  --color-primary: #DEB887;
+  --color-secondary: #CD853F;
+  --color-accent: #D2691E;
+  --color-text: #2F1B14;
+  --color-text-light: #F5DEB3;
+  --color-background: #F5DEB3;
+  --color-border: #A0522D;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  
+  // Spacing
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+  --spacing-xl: 24px;
+  
+  // Border radius
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  
+  // Shadows
+  --shadow-light: 2px 2px 4px var(--color-shadow);
+  --shadow-medium: 4px 4px 10px var(--color-shadow);
+  --shadow-heavy: 6px 6px 15px var(--color-shadow);
+  --shadow-inset: inset 4px 4px 10px rgba(0, 0, 0, 0.4);
+}
+```
+
+## Skeuomorphic Design Principles
+- Use gradients, shadows, and borders to create depth and tactile appearance
+- Selected/active states should appear "pressed" with inset shadows and reduced elevation
+- Hover states should show slight elevation changes
+- Use ridge/inset borders for 3D effects
+- Apply text shadows for depth on text elements
+
+## Component Structure Guidelines
+- Keep components focused and single-responsibility
+- Use TypeScript interfaces for props
+- Implement proper accessibility attributes
+- Use semantic HTML elements where appropriate
+- Apply BEM classes consistently throughout the component
+
+## File Organization
+- Components in `src/components/` directory
+- Styles in `src/styles/` or main `src/style.scss`
+- Use relative imports for local components
+- Group related functionality together
+
+## Example Implementation:
+```tsx
+// Component: Option.tsx
+const Option: React.FC<OptionProps> = ({ label, value, isSelected }) => {
+  return (
+    <label className={`option ${isSelected ? 'option--selected' : ''}`}>
+      <input 
+        type="radio" 
+        className="option__input" 
+        value={value}
+        style={{ display: 'none' }}
+      />
+      <span className="option__label">{label}</span>
+      <div className="option__info">
+        <Info />
+      </div>
+    </label>
+  );
+};
+```
+
+```scss
+// Corresponding SCSS
+.option {
+  background: linear-gradient(145deg, var(--color-background), var(--color-primary));
+  border: 3px ridge var(--color-accent);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin: var(--spacing-sm);
+  box-shadow: var(--shadow-medium);
+  
+  &__input {
+    display: none;
+  }
+  
+  &__label {
+    color: var(--color-text);
+    text-shadow: var(--shadow-light);
+  }
+  
+  &__info {
+    margin-left: var(--spacing-sm);
+  }
+  
+  &--selected {
+    background: linear-gradient(145deg, var(--color-secondary), var(--color-accent));
+    border: 3px inset var(--color-accent);
+    box-shadow: var(--shadow-inset);
+    transform: translateY(2px);
+  }
+  
+  &:hover:not(&--selected) {
+    transform: translateY(1px);
+    box-shadow: var(--shadow-light);
+  }
+}
