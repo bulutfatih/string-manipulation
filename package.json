@@ -1,14 +1,14 @@
 {
 	"name": "string-manipulation",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"private": true,
 	"homepage": "/string-manipulation",
 	"dependencies": {
-		"@floating-ui/react": "0.27.8",
+		"@floating-ui/react": "0.27.12",
 		"esrever": "0.2.0",
 		"react": "19.1.0",
 		"react-dom": "19.1.0",
-		"sass": "1.89.0"
+		"sass": "1.89.2"
 	},
 	"scripts": {
 		"dev": "vite",
@@ -20,9 +20,9 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
 		"@types/esrever": "0.2.3",
-		"@types/react": "19.1.4",
-		"@types/react-dom": "19.1.5",
-		"@vitejs/plugin-react": "4.4.1",
+		"@types/react": "19.1.8",
+		"@types/react-dom": "19.1.6",
+		"@vitejs/plugin-react": "4.5.2",
 		"typescript": "5.8.3",
 		"vite": "6.3.5"
 	}
