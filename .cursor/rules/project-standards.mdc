@@ -1,3 +1,9 @@
+---
+description: "Project standards and conventions for React components, CSS/SCSS architecture, and design system"
+globs: ["**/*.tsx", "**/*.ts", "**/*.scss", "**/*.css"]
+alwaysApply: true
+---
+
 # Project Standards and Conventions
 
 ## Component File Naming
@@ -13,34 +19,89 @@
 - Element: Part of a block that has no standalone meaning (e.g., `option__label`, `button__icon`)
 - Modifier: Flag on blocks or elements for appearance/behavior (e.g., `option--selected`, `button--disabled`)
 
-### BEM Examples:
+## CSS/SCSS Styling Rules
+- **ALWAYS use full class names** in SCSS files for easy searchability (e.g., `.option__label` instead of nested `&__label`)
+- **Minimize nesting** to prevent unnecessary CSS specificity - prefer flat structure
+- **NEVER use IDs for styling** - only use class names for CSS styling
+- **NEVER use inline styles** unless absolutely no other option exists
+- **NEVER use HTML tags for styling** - always add specific class names to elements instead of styling HTML tags directly
+- Keep CSS specificity low and predictable
+- Use meaningful, searchable class names
+
+### Good SCSS Structure:
 ```scss
+// ✅ GOOD - Full class names, easy to search, no tag selectors
 .option {
-  // Block styles
+  display: flex;
+  padding: var(--spacing-md);
 }
 
 .option__label {
-  // Element styles
+  color: var(--color-text);
+  font-weight: bold;
 }
 
-.option__info {
-  // Element styles
+.option__input {
+  display: none;
 }
 
 .option--selected {
-  // Modifier styles for selected state
-}
-
-.button {
-  // Block styles
+  background: var(--color-accent);
 }
 
 .button__icon {
-  // Element styles
+  width: 20px;
+  height: 20px;
+}
+```
+
+### Bad SCSS Structure:
+```scss
+// ❌ BAD - Nested, hard to search, high specificity, uses tag selectors
+.option {
+  display: flex;
+  padding: var(--spacing-md);
+  
+  &__label {
+    color: var(--color-text);
+    font-weight: bold;
+    
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+  
+  img {  // ❌ BAD - HTML tag selector
+    width: 20px;
+    height: 20px;
+  }
+  
+  &--selected {
+    background: var(--color-accent);
+  }
+}
+```
+
+### HTML Tag Selector Examples:
+```scss
+// ❌ BAD - Using HTML tag selectors
+.wrapper img {
+  width: 20px;
+  height: 20px;
 }
 
-.button--primary {
-  // Modifier styles
+.info span {
+  font-weight: bold;
+}
+
+// ✅ GOOD - Using specific class names
+.wrapper__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.info__text {
+  font-weight: bold;
 }
 ```
 
@@ -113,7 +174,6 @@ const Option: React.FC<OptionProps> = ({ label, value, isSelected }) => {
         type="radio" 
         className="option__input" 
         value={value}
-        style={{ display: 'none' }}
       />
       <span className="option__label">{label}</span>
       <div className="option__info">
@@ -125,7 +185,7 @@ const Option: React.FC<OptionProps> = ({ label, value, isSelected }) => {
 ```
 
 ```scss
-// Corresponding SCSS
+// Corresponding SCSS - Full class names, no nesting, no tag selectors
 .option {
   background: linear-gradient(145deg, var(--color-background), var(--color-primary));
   border: 3px ridge var(--color-accent);
@@ -133,29 +193,29 @@ const Option: React.FC<OptionProps> = ({ label, value, isSelected }) => {
   padding: var(--spacing-md);
   margin: var(--spacing-sm);
   box-shadow: var(--shadow-medium);
-  
-  &__input {
-    display: none;
-  }
-  
-  &__label {
-    color: var(--color-text);
-    text-shadow: var(--shadow-light);
-  }
-  
-  &__info {
-    margin-left: var(--spacing-sm);
-  }
-  
-  &--selected {
-    background: linear-gradient(145deg, var(--color-secondary), var(--color-accent));
-    border: 3px inset var(--color-accent);
-    box-shadow: var(--shadow-inset);
-    transform: translateY(2px);
-  }
-  
-  &:hover:not(&--selected) {
-    transform: translateY(1px);
-    box-shadow: var(--shadow-light);
-  }
+}
+
+.option__input {
+  display: none;
+}
+
+.option__label {
+  color: var(--color-text);
+  text-shadow: var(--shadow-light);
+}
+
+.option__info {
+  margin-left: var(--spacing-sm);
+}
+
+.option--selected {
+  background: linear-gradient(145deg, var(--color-secondary), var(--color-accent));
+  border: 3px inset var(--color-accent);
+  box-shadow: var(--shadow-inset);
+  transform: translateY(2px);
+}
+
+.option:hover:not(.option--selected) {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-light);
 }

@@ -1,10 +1,65 @@
+:root {
+  // Colors - Skeuomorphic brown/tan palette
+  --color-primary: #DEB887;
+  --color-secondary: #CD853F;
+  --color-accent: #D2691E;
+  --color-dark: #8B4513;
+  --color-darker: #654321;
+  --color-darkest: #3E2723;
+  --color-text: #2F1B14;
+  --color-text-light: #F5DEB3;
+  --color-background: #F5DEB3;
+  --color-background-light: #FFF8DC;
+  --color-border: #A0522D;
+  --color-border-light: #D2691E;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-shadow-dark: rgba(0, 0, 0, 0.5);
+  --color-shadow-light: rgba(255, 228, 181, 0.6);
+  --color-shadow-inset: rgba(62, 39, 35, 0.3);
+  --color-shadow-inset-dark: rgba(62, 39, 35, 0.8);
+  
+  // Spacing
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+  --spacing-xl: 24px;
+  --spacing-xxl: 32px;
+  
+  // Border radius
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 15px;
+  
+  // Shadows
+  --shadow-light: 2px 2px 4px var(--color-shadow);
+  --shadow-medium: 4px 4px 10px var(--color-shadow);
+  --shadow-heavy: 6px 6px 15px var(--color-shadow-dark);
+  --shadow-extra-heavy: 8px 8px 20px var(--color-shadow-dark);
+  --shadow-inset: inset 4px 4px 10px var(--color-shadow-inset);
+  --shadow-inset-light: inset 2px 2px 6px var(--color-shadow-inset);
+  --shadow-button: inset 1px 1px 3px var(--color-shadow-light), 2px 2px 6px var(--color-shadow);
+  
+  // Typography
+  --font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  
+  // Borders
+  --border-ridge: 3px ridge;
+  --border-inset: 3px inset;
+  --border-outset: 3px outset;
+}
+
 body {
   margin: 0;
-  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: 
-    radial-gradient(ellipse at center, #8B4513 0%, #654321 50%, #3E2723 100%),
+    radial-gradient(ellipse at center, var(--color-dark) 0%, var(--color-darker) 50%, var(--color-darkest) 100%),
     repeating-linear-gradient(
       90deg,
       transparent,
@@ -19,7 +74,7 @@ body {
   max-width: 1300px;
   margin: 0 auto;
   background: 
-    linear-gradient(145deg, #D2691E, #A0522D),
+    linear-gradient(145deg, var(--color-accent), var(--color-border)),
     repeating-linear-gradient(
       0deg,
       transparent,
@@ -27,25 +82,25 @@ body {
       rgba(101, 67, 33, 0.3) 3px,
       rgba(101, 67, 33, 0.3) 6px
     );
-  border-radius: 15px;
+  border-radius: var(--radius-xl);
   box-shadow: 
-    inset 2px 2px 8px rgba(255, 228, 181, 0.6),
-    inset -3px -3px 8px rgba(62, 39, 35, 0.8),
-    8px 8px 20px rgba(0, 0, 0, 0.5);
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border: 3px ridge #8B4513;
+    inset 2px 2px 8px var(--color-shadow-light),
+    inset -3px -3px 8px var(--color-shadow-inset-dark),
+    var(--shadow-extra-heavy);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  border: var(--border-ridge) var(--color-dark);
 }
 
 .title {
   position: absolute;
   top: -17px;
   left: 36px;
-  font-size: 12px;
-  color: #2F1B14;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
   font-weight: bold;
   background: 
-    linear-gradient(145deg, #DEB887, #CD853F),
+    linear-gradient(145deg, var(--color-primary), var(--color-secondary)),
     repeating-linear-gradient(
       45deg,
       transparent,
@@ -53,9 +108,9 @@ body {
       rgba(139, 69, 19, 0.2) 2px,
       rgba(139, 69, 19, 0.2) 4px
     );
-  padding: 0 4px;
-  border-radius: 8px 8px 0 0;
-  border: 3px ridge #A0522D;
+  padding: 0 var(--spacing-xs);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  border: var(--border-ridge) var(--color-border);
   border-bottom: none;
   display: inline-block;
 }
@@ -63,8 +118,8 @@ body {
 .outer-container {
   display: flex;
   flex-direction: row;
-  margin: 20px;
-  gap: 20px;
+  margin: var(--spacing-lg);
+  gap: var(--spacing-lg);
 }
 
 @media only screen and (max-width: 768px) {
@@ -79,17 +134,17 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: var(--spacing-xl);
 }
 
 .wrapper {
   display: flex;
   flex-direction: row;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 0;
   overflow: hidden;
   background: 
-    linear-gradient(145deg, #CD853F, #A0522D),
+    linear-gradient(145deg, var(--color-secondary), var(--color-border)),
     repeating-linear-gradient(
       90deg,
       transparent,
@@ -97,10 +152,10 @@ body {
       rgba(139, 69, 19, 0.3) 4px,
       rgba(139, 69, 19, 0.3) 8px
     );
-  border: 4px ridge #8B4513;
+  border: 4px ridge var(--color-dark);
   box-shadow: 
-    8px 8px 20px rgba(0, 0, 0, 0.5),
-    inset 2px 2px 6px rgba(255, 228, 181, 0.4);
+    var(--shadow-extra-heavy),
+    inset 2px 2px 6px var(--color-shadow-light);
 }
 
 .wrapper__left {
@@ -151,11 +206,11 @@ body {
   height: 250px;
   margin: 10px;
   padding: 15px;
-  border: 3px inset #D2691E;
+  border: var(--border-inset) var(--color-border-light);
   outline: 0;
   resize: none;
   background: 
-    linear-gradient(145deg, #FFF8DC, #F5DEB3),
+    linear-gradient(145deg, var(--color-background-light), var(--color-background)),
     repeating-linear-gradient(
       90deg,
       transparent,
@@ -163,10 +218,10 @@ body {
       rgba(160, 82, 45, 0.05) 1px,
       rgba(160, 82, 45, 0.05) 2px
     );
-  border-radius: 6px;
-  font-size: 14px;
-  color: #2F1B14;
-  box-shadow: inset 4px 4px 10px rgba(62, 39, 35, 0.3);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  box-shadow: var(--shadow-inset);
 }
 
 .wrapper__close-button {
@@ -197,32 +252,33 @@ body {
     inset 1px 1px 3px rgba(255, 228, 181, 0.6),
     2px 2px 6px rgba(0, 0, 0, 0.4);
   
-  &:hover {
-    background: 
-      linear-gradient(145deg, #F0E68C, #DAA520),
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 2px,
-        rgba(139, 69, 19, 0.3) 2px,
-        rgba(139, 69, 19, 0.3) 4px
-      );
-    transform: translateY(1px);
-  }
-  
-  &:active {
-    border: 3px inset #A0522D;
-    transform: translateY(2px);
-    box-shadow: inset 3px 3px 8px rgba(62, 39, 35, 0.5);
-  }
-  
-  img {
-    width: 20px;
-    opacity: 0.8;
-    filter: 
-      sepia(100%) saturate(200%) hue-rotate(15deg) brightness(0.7)
-      drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
-  }
+}
+
+.wrapper__close-button:hover {
+  background: 
+    linear-gradient(145deg, #F0E68C, #DAA520),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 69, 19, 0.3) 2px,
+      rgba(139, 69, 19, 0.3) 4px
+    );
+  transform: translateY(1px);
+}
+
+.wrapper__close-button:active {
+  border: 3px inset #A0522D;
+  transform: translateY(2px);
+  box-shadow: inset 3px 3px 8px rgba(62, 39, 35, 0.5);
+}
+
+.wrapper__close-button .button__icon {
+  width: 20px;
+  opacity: 0.8;
+  filter: 
+    sepia(100%) saturate(200%) hue-rotate(15deg) brightness(0.7)
+    drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
 }
 
 .wrapper__transfer-button {
@@ -252,32 +308,33 @@ body {
     inset 1px 1px 3px rgba(255, 215, 0, 0.4),
     2px 2px 6px rgba(0, 0, 0, 0.4);
   
-  &:hover {
-    background: 
-      linear-gradient(145deg, #DAA520, #B8860B),
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 2px,
-        rgba(139, 105, 20, 0.4) 2px,
-        rgba(139, 105, 20, 0.4) 4px
-      );
-    transform: translateY(1px);
-  }
-  
-  &:active {
-    border: 3px inset #DAA520;
-    transform: translateY(2px);
-    box-shadow: inset 3px 3px 8px rgba(139, 105, 20, 0.6);
-  }
-  
-  img {
-    width: 20px;
-    opacity: 0.9;
-    filter: 
-      sepia(100%) saturate(150%) hue-rotate(30deg) brightness(0.9)
-      drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
-  }
+}
+
+.wrapper__transfer-button:hover {
+  background: 
+    linear-gradient(145deg, #DAA520, #B8860B),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 105, 20, 0.4) 2px,
+      rgba(139, 105, 20, 0.4) 4px
+    );
+  transform: translateY(1px);
+}
+
+.wrapper__transfer-button:active {
+  border: 3px inset #DAA520;
+  transform: translateY(2px);
+  box-shadow: inset 3px 3px 8px rgba(139, 105, 20, 0.6);
+}
+
+.wrapper__transfer-button .button__icon {
+  width: 20px;
+  opacity: 0.9;
+  filter: 
+    sepia(100%) saturate(150%) hue-rotate(30deg) brightness(0.9)
+    drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
 }
 
 .wrapper__copy-button {
@@ -308,32 +365,33 @@ body {
     inset 1px 1px 3px rgba(144, 238, 144, 0.4),
     2px 2px 6px rgba(0, 0, 0, 0.4);
   
-  &:hover {
-    background: 
-      linear-gradient(145deg, #32CD32, #228B22),
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 2px,
-        rgba(0, 100, 0, 0.3) 2px,
-        rgba(0, 100, 0, 0.3) 4px
-      );
-    transform: translateY(1px);
-  }
-  
-  &:active {
-    border: 3px inset #32CD32;
-    transform: translateY(2px);
-    box-shadow: inset 3px 3px 8px rgba(0, 100, 0, 0.5);
-  }
-  
-  img {
-    width: 20px;
-    opacity: 0.9;
-    filter: 
-      sepia(100%) saturate(200%) hue-rotate(90deg) brightness(1.2)
-      drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
-  }
+}
+
+.wrapper__copy-button:hover {
+  background: 
+    linear-gradient(145deg, #32CD32, #228B22),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 100, 0, 0.3) 2px,
+      rgba(0, 100, 0, 0.3) 4px
+    );
+  transform: translateY(1px);
+}
+
+.wrapper__copy-button:active {
+  border: 3px inset #32CD32;
+  transform: translateY(2px);
+  box-shadow: inset 3px 3px 8px rgba(0, 100, 0, 0.5);
+}
+
+.wrapper__copy-button .button__icon {
+  width: 20px;
+  opacity: 0.9;
+  filter: 
+    sepia(100%) saturate(200%) hue-rotate(90deg) brightness(1.2)
+    drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
 }
 
 .gray-bg {
@@ -371,11 +429,8 @@ body {
   border-color: #8B4513;
 }
 
-.info-template__container {
-  display: inline-block;
-}
-
-.info-template__button {
+// Info component - BEM methodology with full class names
+.info__button {
   display: inline-block;
   background: 
     linear-gradient(145deg, #B8860B, #8B6914),
@@ -386,8 +441,8 @@ body {
       rgba(139, 105, 20, 0.3) 1px,
       rgba(139, 105, 20, 0.3) 2px
     );
-  color: #F5DEB3;
-  font-size: 12px;
+  color: var(--color-text-light);
+  font-size: var(--font-size-sm);
   font-weight: bold;
   border: 2px ridge #DAA520;
   border-radius: 50%;
@@ -395,38 +450,38 @@ body {
   height: 18px;
   text-align: center;
   padding: 0;
-  margin: 1px 5px;
+  margin: 1px var(--spacing-xs);
   cursor: pointer;
   transition: all 0.1s ease;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   box-shadow: 
     inset 1px 1px 2px rgba(255, 215, 0, 0.3),
-    2px 2px 4px rgba(0, 0, 0, 0.4);
-  
-  &:hover {
-    background: 
-      linear-gradient(145deg, #DAA520, #B8860B),
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 1px,
-        rgba(139, 105, 20, 0.4) 1px,
-        rgba(139, 105, 20, 0.4) 2px
-      );
-    transform: translateY(1px);
-  }
-  
-  &:active {
-    border: 2px inset #DAA520;
-    transform: translateY(2px);
-  }
+    var(--shadow-light);
 }
 
-.info-template__inner-container {
+.info__button:hover {
+  background: 
+    linear-gradient(145deg, #DAA520, #B8860B),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 1px,
+      rgba(139, 105, 20, 0.4) 1px,
+      rgba(139, 105, 20, 0.4) 2px
+    );
+  transform: translateY(1px);
+}
+
+.info__button:active {
+  border: 2px inset #DAA520;
+  transform: translateY(2px);
+}
+
+.info__template {
   display: flex;
   flex-direction: row;
   background: 
-    linear-gradient(145deg, #8B4513, #654321),
+    linear-gradient(145deg, var(--color-dark), var(--color-darker)),
     repeating-linear-gradient(
       90deg,
       transparent,
@@ -435,48 +490,49 @@ body {
       rgba(139, 69, 19, 0.3) 6px
     );
   padding: 15px;
-  border-radius: 8px;
-  border: 3px ridge #A0522D;
-  box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.5);
-  
-  span {
-    color: #F5DEB3;
-    white-space: pre-wrap;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-  }
-  
-  .left {
-    display: flex;
-    flex: 1;
-    align-items: center;
-  }
-  
-  .middle {
-    display: flex;
-    align-items: center;
-    margin: 0 20px;
-    
-    img {
-      width: 24px;
-      filter: 
-        sepia(100%) saturate(200%) hue-rotate(15deg) brightness(1.2)
-        drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.6));
-    }
-  }
-  
-  .right {
-    display: flex;
-    align-items: center;
-  }
+  border-radius: var(--radius-md);
+  border: var(--border-ridge) var(--color-border);
+  box-shadow: var(--shadow-heavy);
 }
 
-.options-form {
+.info__template-text {
+  color: var(--color-text-light);
+  white-space: pre-wrap;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.info__template-left {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.info__template-middle {
+  display: flex;
+  align-items: center;
+  margin: 0 var(--spacing-lg);
+}
+
+.info__template-icon {
+  width: var(--spacing-xl);
+  filter: 
+    sepia(100%) saturate(200%) hue-rotate(15deg) brightness(1.2)
+    drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.6));
+}
+
+.info__template-right {
+  display: flex;
+  align-items: center;
+}
+
+// Options form - BEM methodology
+.options {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 20px;
+  margin: var(--spacing-lg);
   background: 
-    linear-gradient(145deg, #DEB887, #CD853F),
+    linear-gradient(145deg, var(--color-primary), var(--color-secondary)),
     repeating-linear-gradient(
       0deg,
       transparent,
@@ -484,20 +540,21 @@ body {
       rgba(139, 69, 19, 0.2) 4px,
       rgba(139, 69, 19, 0.2) 8px
     );
-  padding: 20px;
-  border-radius: 12px;
-  border: 4px inset #D2691E;
-  box-shadow: inset 4px 4px 10px rgba(62, 39, 35, 0.3);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  border: 4px inset var(--color-accent);
+  box-shadow: var(--shadow-inset);
 }
 
-.option-container {
+// Option component - BEM methodology with full class names
+.option {
   display: flex;
   align-items: center;
-  padding: 16px;
-  margin: 8px;
-  border-radius: 8px;
+  padding: var(--spacing-md);
+  margin: var(--spacing-sm);
+  border-radius: var(--radius-md);
   background: 
-    linear-gradient(145deg, #F5DEB3, #DEB887),
+    linear-gradient(145deg, var(--color-background), var(--color-primary)),
     repeating-linear-gradient(
       45deg,
       transparent,
@@ -505,52 +562,61 @@ body {
       rgba(160, 82, 45, 0.1) 2px,
       rgba(160, 82, 45, 0.1) 4px
     );
-  border: 3px ridge #D2691E;
+  border: var(--border-ridge) var(--color-border-light);
   box-shadow: 
-    4px 4px 10px rgba(0, 0, 0, 0.3),
-    inset 1px 1px 3px rgba(255, 228, 181, 0.6);
+    var(--shadow-medium),
+    inset 1px 1px 3px var(--color-shadow-light);
   cursor: pointer;
   user-select: none;
   transition: all 0.1s ease;
-  color: #2F1B14;
-  text-shadow: 1px 1px 2px rgba(255, 228, 181, 0.8);
-  
-  &:hover {
-    background: 
-      linear-gradient(145deg, #FFF8DC, #F5DEB3),
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 2px,
-        rgba(160, 82, 45, 0.15) 2px,
-        rgba(160, 82, 45, 0.15) 4px
-      );
-    transform: translateY(1px);
-  }
-  
-  &:active {
-    border: 3px inset #D2691E;
-    transform: translateY(2px);
-    box-shadow: inset 4px 4px 10px rgba(62, 39, 35, 0.4);
-  }
-
-  input[type="radio"] {
-    display: none;
-  }
+  color: var(--color-text);
+  text-shadow: 1px 1px 2px var(--color-shadow-light);
 }
 
-.option-container.selected {
-  border: 3px inset #cc9900;
-  box-shadow: inset 4px 4px 10px rgba(0, 0, 0, 0.4);
-  color: #8B4513;
-  text-shadow: 1px 1px 2px #fff8dc;
+.option:hover:not(.option--selected) {
+  background: 
+    linear-gradient(145deg, var(--color-background-light), var(--color-background)),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(160, 82, 45, 0.15) 2px,
+      rgba(160, 82, 45, 0.15) 4px
+    );
+  transform: translateY(1px);
+}
+
+.option:active:not(.option--selected) {
+  border: var(--border-inset) var(--color-border-light);
+  transform: translateY(2px);
+  box-shadow: var(--shadow-inset);
+}
+
+.option__input {
+  display: none;
+}
+
+.option__info {
+  margin-right: var(--spacing-sm);
+}
+
+.option__label {
+  flex: 1;
+}
+
+.option--selected {
+  background: linear-gradient(145deg, #e6cfa5, #e6b800);
+  border: var(--border-inset) #cc9900;
+  box-shadow: var(--shadow-inset);
+  color: var(--color-dark);
+  text-shadow: 1px 1px 2px var(--color-background-light);
   transform: translateY(2px);
 }
 
 .github {
   text-align: center;
   background: 
-    linear-gradient(145deg, #DEB887, #CD853F),
+    linear-gradient(145deg, var(--color-primary), var(--color-secondary)),
     repeating-linear-gradient(
       45deg,
       transparent,
@@ -558,27 +624,27 @@ body {
       rgba(139, 69, 19, 0.2) 3px,
       rgba(139, 69, 19, 0.2) 6px
     );
-  padding: 20px;
-  border-radius: 12px;
-  border: 4px ridge #A0522D;
-  margin: 20px;
-  box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.4);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  border: 4px ridge var(--color-border);
+  margin: var(--spacing-lg);
+  box-shadow: var(--shadow-heavy);
+}
 
-  img {
-    transition-duration: 0.3s;
-    opacity: 0.7;
-    filter: 
-      sepia(100%) saturate(200%) hue-rotate(15deg) brightness(0.8)
-      drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.5));
-    
-    &:hover {
-      opacity: 1;
-      transform: scale(1.05);
-      filter: 
-        sepia(100%) saturate(200%) hue-rotate(15deg) brightness(1)
-        drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.6));
-    }
-  }
+.github__icon {
+  transition-duration: 0.3s;
+  opacity: 0.7;
+  filter: 
+    sepia(100%) saturate(200%) hue-rotate(15deg) brightness(0.8)
+    drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.5));
+}
+
+.github__icon:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  filter: 
+    sepia(100%) saturate(200%) hue-rotate(15deg) brightness(1)
+    drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.6));
 }
 
 .notification {
@@ -594,16 +660,16 @@ body {
       rgba(0, 100, 0, 0.2) 2px,
       rgba(0, 100, 0, 0.2) 4px
     );
-  color: #F5DEB3;
+  color: var(--color-text-light);
   padding: 15px 25px;
-  border-radius: 8px;
-  border: 3px ridge #32CD32;
+  border-radius: var(--radius-md);
+  border: var(--border-ridge) #32CD32;
   box-shadow: 
-    6px 6px 15px rgba(0, 0, 0, 0.5),
+    var(--shadow-heavy),
     inset 1px 1px 3px rgba(144, 238, 144, 0.4);
-  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  font-family: var(--font-family);
   font-weight: bold;
-  font-size: 14px;
+  font-size: var(--font-size-md);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   z-index: 10000;
   animation: slideInBounce 0.5s ease-out, fadeOut 0.5s ease-in 1.5s forwards;
@@ -634,4 +700,32 @@ body {
     opacity: 0;
     transform: scale(0.9);
   }
+}
+
+// Button component - BEM methodology with full class names
+.button__tooltip {
+  background: linear-gradient(145deg, #333, #222);
+  color: #fff;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: var(--shadow-medium);
+  white-space: nowrap;
+  border: 1px outset #444;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+// Tooltip component - moved from inline styles
+.tooltip {
+  background: #222;
+  color: #fff;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  white-space: nowrap;
 }

@@ -61,14 +61,14 @@ const Main: React.FC = () => {
 								className="wrapper__close-button" 
 								onClick={() => setInput("")}
 							>
-								<img alt="" src={CloseIcon} />
+								<img className="button__icon" alt="" src={CloseIcon} />
 							</Button>
 							<Button
 								tooltip="Transfer the result to the input"
 								className="wrapper__transfer-button"
 								onClick={() => setInput(output)}
 							>
-								<img alt="" src={LeftArrowIcon} />
+								<img className="button__icon" alt="" src={LeftArrowIcon} />
 							</Button>
 						</div>
 					</div>
@@ -86,21 +86,21 @@ const Main: React.FC = () => {
 								className="wrapper__copy-button" 
 								onClick={copyToClipboard}
 							>
-								<img alt="" src={CopyIcon} />
+								<img className="button__icon" alt="" src={CopyIcon} />
 							</Button>
 							<Button
 								tooltip="Transfer the result to the input"
 								className="wrapper__transfer-button"
 								onClick={() => setInput(output)}
 							>
-								<img alt="" src={LeftArrowIcon} />
+								<img className="button__icon" alt="" src={LeftArrowIcon} />
 							</Button>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<form className="options-form">
+			<form className="options">
 				<Option
 					label="Upper case"
 					value="upperCase"
@@ -235,7 +235,7 @@ const Main: React.FC = () => {
 			</form>
 			<div className="github">
 				<a href="https://github.com/bulutfatih/string-manipulation" target="_blank" rel="noreferrer">
-					<img alt="" src={GitHubIcon} />
+					<img className="github__icon" alt="" src={GitHubIcon} />
 				</a>
 			</div>
 		</div>

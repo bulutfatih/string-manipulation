@@ -33,7 +33,7 @@ const Button: React.FC<ButtonProps> = ({
 			<div 
 				ref={refs.setReference} 
 				{...getReferenceProps()} 
-				className={className} 
+				className={`button ${className || ''}`}
 				onClick={onClick}
 			>
 				{children}
@@ -42,20 +42,8 @@ const Button: React.FC<ButtonProps> = ({
 				<FloatingPortal>
 					<div
 						ref={refs.setFloating}
-						style={{
-							...floatingStyles,
-							background: "linear-gradient(145deg, #333, #222)",
-							color: "#fff",
-							padding: "4px 8px",
-							borderRadius: "6px",
-							fontSize: "12px",
-							zIndex: 9999,
-							pointerEvents: "none",
-							boxShadow: "3px 3px 8px rgba(0, 0, 0, 0.5)",
-							whiteSpace: "nowrap",
-							border: "1px outset #444",
-							textShadow: "1px 1px 2px rgba(0, 0, 0, 0.8)",
-						}}
+						className="button__tooltip"
+						style={floatingStyles}
 						{...getFloatingProps()}
 					>
 						{tooltip}

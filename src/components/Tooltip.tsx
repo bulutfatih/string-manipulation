@@ -30,18 +30,8 @@ const Tooltip: React.FC<TooltipProps> = ({ content, children, placement = "top",
 				<FloatingPortal>
 					<div
 						ref={refs.setFloating}
-						style={{
-							...floatingStyles,
-							background: "#222",
-							color: "#fff",
-							padding: "4px 8px",
-							borderRadius: "4px",
-							fontSize: "12px",
-							zIndex: 9999,
-							pointerEvents: "none",
-							boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-							whiteSpace: "nowrap",
-						}}
+						className="tooltip"
+						style={floatingStyles}
 						{...getFloatingProps()}
 					>
 						{content}

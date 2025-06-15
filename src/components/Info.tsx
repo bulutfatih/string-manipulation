@@ -8,15 +8,15 @@ type InfoTemplateProps = {
 };
 
 const InfoTemplate: React.FC<InfoTemplateProps> = ({ original, result }) => (
-	<div className="info-template__inner-container">
-		<div className="left">
-			<span>{original}</span>
+	<div className="info__template">
+		<div className="info__template-left">
+			<span className="info__template-text">{original}</span>
 		</div>
-		<div className="middle">
-			<img alt="" src={ConvertIcon} />
+		<div className="info__template-middle">
+			<img className="info__template-icon" alt="" src={ConvertIcon} />
 		</div>
-		<div className="right">
-			<span>{result}</span>
+		<div className="info__template-right">
+			<span className="info__template-text">{result}</span>
 		</div>
 	</div>
 );
@@ -27,7 +27,7 @@ type InfoProps = {
 
 const Info: React.FC<InfoProps> = ({ example }) => (
 	<Tooltip content={<InfoTemplate {...example} />} placement="bottom">
-		<i className="info-template__button">i</i>
+		<i className="info__button">i</i>
 	</Tooltip>
 );
 
