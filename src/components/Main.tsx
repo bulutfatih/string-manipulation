@@ -6,9 +6,10 @@ import Option from "./Option";
 import Button from "./Button";
 
 import CloseIcon from "../images/close-button.svg";
-import CopyIcon from "../images/copy.svg";
+import CopyIcon from "../images/copy.png";
 import GitHubIcon from "../images/github.png";
 import LeftArrowIcon from "../images/left-arrow.svg";
+import PasteIcon from "../images/paste.png";
 
 const SAMPLE_INPUT = "i AM a CrAzy StrINg, MAkE mE nORMal!";
 
@@ -30,6 +31,16 @@ const Main: React.FC = () => {
 			setTimeout(() => {
 				setShowNotification(false);
 			}, 2000);
+		}
+	};
+
+	const pasteFromClipboard = async () => {
+		try {
+			const text = await navigator.clipboard.readText();
+			setInput(text);
+		} catch (err) {
+			// Fallback for older browsers or if clipboard API is not available
+			console.error("Failed to read clipboard:", err);
 		}
 	};
 
@@ -64,11 +75,11 @@ const Main: React.FC = () => {
 								<img className="button__icon" alt="" src={CloseIcon} />
 							</Button>
 							<Button
-								tooltip="Transfer the result to the input"
-								className="wrapper__transfer-button"
-								onClick={() => setInput(output)}
+								tooltip="Paste"
+								className="wrapper__paste-button"
+								onClick={pasteFromClipboard}
 							>
-								<img className="button__icon" alt="" src={LeftArrowIcon} />
+								<img className="button__icon" alt="" src={PasteIcon} />
 							</Button>
 						</div>
 					</div>
@@ -81,19 +92,19 @@ const Main: React.FC = () => {
 							<textarea className="wrapper__textarea gray-bg" value={output} ref={outputRef} readOnly />
 						</div>
 						<div className="wrapper__right">
-							<Button 
-								tooltip="Copy" 
-								className="wrapper__copy-button" 
-								onClick={copyToClipboard}
-							>
-								<img className="button__icon" alt="" src={CopyIcon} />
-							</Button>
 							<Button
 								tooltip="Transfer the result to the input"
 								className="wrapper__transfer-button"
 								onClick={() => setInput(output)}
 							>
 								<img className="button__icon" alt="" src={LeftArrowIcon} />
+							</Button>
+							<Button 
+								tooltip="Copy" 
+								className="wrapper__copy-button" 
+								onClick={copyToClipboard}
+							>
+								<img className="button__icon" alt="" src={CopyIcon} />
 							</Button>
 						</div>
 					</div>
