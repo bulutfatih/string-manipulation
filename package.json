@@ -3,19 +3,19 @@
 	"version": "0.2.2",
 	"private": true,
 	"homepage": "/string-manipulation",
-	"dependencies": {
-		"@floating-ui/react": "0.27.16",
-		"esrever": "0.2.0",
-		"react": "19.2.0",
-		"react-dom": "19.2.0",
-		"sass": "1.93.3"
-	},
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "biome check .",
 		"check:fix": "biome check --write ."
+	},
+	"dependencies": {
+		"@floating-ui/react": "0.27.16",
+		"esrever": "0.2.0",
+		"react": "19.2.0",
+		"react-dom": "19.2.0",
+		"sass": "1.93.3"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.3.2",
