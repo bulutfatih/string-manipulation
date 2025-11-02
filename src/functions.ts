@@ -1,27 +1,65 @@
 import Esrever from "esrever";
 
-const upperCase = (str: string): string => {
-	return str.normalize().toUpperCase();
+// Detect locale from text content by checking for language-specific characters
+const detectLocaleFromText = (str: string): string | undefined => {
+	// Turkish-specific characters that require special case conversion
+	// Key characters: ı (dotless i), İ (dotted I)
+	const turkishAzerbaijaniChars = /[ıİşŞçÇğĞüÜöÖ]/;
+	if (turkishAzerbaijaniChars.test(str)) {
+		return 'tr-TR';
+	}
+	
+	// Lithuanian-specific characters with ogoneks
+	// These characters have special uppercase forms
+	const lithuanianChars = /[ąęįųĄĘĮŲ]/;
+	if (lithuanianChars.test(str)) {
+		return 'lt-LT';
+	}
+	
+	// Greek-specific: Sigma (Σ) has two lowercase forms (σ and ς)
+	// Check for Greek characters
+	const greekChars = /[αβγδεζηθικλμνξοπρστυφχψωΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ]/;
+	if (greekChars.test(str)) {
+		return 'el-GR';
+	}
+	
+	// German-specific: ß (Eszett) should become SS in uppercase
+	const germanChars = /[ßÄÖÜäöü]/;
+	if (germanChars.test(str)) {
+		return 'de-DE';
+	}
+	
+	// Return undefined to use browser default for other languages
+	return undefined;
 };
 
-const sentenceCase = (str: string): string => {
-	return lowerCase(str)
-		.replace(/[a-z]/i, (letter) => letter.toUpperCase())
+const upperCase = (str: string, locale?: string): string => {
+	const effectiveLocale = locale || detectLocaleFromText(str);
+	return str.normalize().toLocaleUpperCase(effectiveLocale);
+};
+
+const sentenceCase = (str: string, locale?: string): string => {
+	const effectiveLocale = locale || detectLocaleFromText(str);
+	return lowerCase(str, effectiveLocale)
+		.replace(/[a-z]/i, (letter) => letter.toLocaleUpperCase(effectiveLocale))
 		.trim();
 };
 
-const titleCase = (str: string): string => {
-	return str.toLowerCase().replace(/\b(\w)/g, (s) => s.toUpperCase());
+const titleCase = (str: string, locale?: string): string => {
+	const effectiveLocale = locale || detectLocaleFromText(str);
+	return str.toLocaleLowerCase(effectiveLocale).replace(/\b(\w)/g, (s) => s.toLocaleUpperCase(effectiveLocale));
 };
 
-const lowerCase = (str: string): string => {
-	return str.normalize().toLowerCase();
+const lowerCase = (str: string, locale?: string): string => {
+	const effectiveLocale = locale || detectLocaleFromText(str);
+	return str.normalize().toLocaleLowerCase(effectiveLocale);
 };
 
-const invertCase = (str: string): string => {
+const invertCase = (str: string, locale?: string): string => {
+	const effectiveLocale = locale || detectLocaleFromText(str);
 	return str
 		.split("")
-		.map((c) => (c === c.toUpperCase() ? c.toLowerCase() : c.toUpperCase()))
+		.map((c) => (c === c.toLocaleUpperCase(effectiveLocale) ? c.toLocaleLowerCase(effectiveLocale) : c.toLocaleUpperCase(effectiveLocale)))
 		.join("");
 };
 
