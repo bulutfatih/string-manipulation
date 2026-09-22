@@ -6,29 +6,29 @@ const detectLocaleFromText = (str: string): string | undefined => {
 	// Key characters: ı (dotless i), İ (dotted I)
 	const turkishAzerbaijaniChars = /[ıİşŞçÇğĞüÜöÖ]/;
 	if (turkishAzerbaijaniChars.test(str)) {
-		return 'tr-TR';
+		return "tr-TR";
 	}
-	
+
 	// Lithuanian-specific characters with ogoneks
 	// These characters have special uppercase forms
 	const lithuanianChars = /[ąęįųĄĘĮŲ]/;
 	if (lithuanianChars.test(str)) {
-		return 'lt-LT';
+		return "lt-LT";
 	}
-	
+
 	// Greek-specific: Sigma (Σ) has two lowercase forms (σ and ς)
 	// Check for Greek characters
 	const greekChars = /[αβγδεζηθικλμνξοπρστυφχψωΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ]/;
 	if (greekChars.test(str)) {
-		return 'el-GR';
+		return "el-GR";
 	}
-	
+
 	// German-specific: ß (Eszett) should become SS in uppercase
 	const germanChars = /[ßÄÖÜäöü]/;
 	if (germanChars.test(str)) {
-		return 'de-DE';
+		return "de-DE";
 	}
-	
+
 	// Return undefined to use browser default for other languages
 	return undefined;
 };
@@ -59,7 +59,11 @@ const invertCase = (str: string, locale?: string): string => {
 	const effectiveLocale = locale || detectLocaleFromText(str);
 	return str
 		.split("")
-		.map((c) => (c === c.toLocaleUpperCase(effectiveLocale) ? c.toLocaleLowerCase(effectiveLocale) : c.toLocaleUpperCase(effectiveLocale)))
+		.map((c) =>
+			c === c.toLocaleUpperCase(effectiveLocale)
+				? c.toLocaleLowerCase(effectiveLocale)
+				: c.toLocaleUpperCase(effectiveLocale),
+		)
 		.join("");
 };
 
@@ -113,42 +117,106 @@ const toSingleLine = (str: string): string => {
 	return str.replace(/[\n]+/g, " ");
 };
 
-const getFunction = (functionId: string, inputText: string): string => {
-	switch (functionId) {
-		case "upperCase":
-			return upperCase(inputText);
-		case "sentenceCase":
-			return sentenceCase(inputText);
-		case "titleCase":
-			return titleCase(inputText);
-		case "lowerCase":
-			return lowerCase(inputText);
-		case "invertCase":
-			return invertCase(inputText);
-		case "pointToComma":
-			return pointToComma(inputText);
-		case "commaToPoint":
-			return commaToPoint(inputText);
-		case "removeNumbers":
-			return removeNumbers(inputText);
-		case "removeNonNumeric":
-			return removeNonNumberic(inputText);
-		case "removeSpaces":
-			return removeSpaces(inputText);
-		case "reverseText":
-			return reverseText(inputText);
-		case "removeDuplicateWordsDividedByComma":
-			return removeDuplicateWordsDividedByComma(inputText);
-		case "removeDuplicateLines":
-			return removeDuplicateLines(inputText);
-		case "toMultipleLines":
-			return toMultipleLines(inputText);
-		case "toSingleLine":
-			return toSingleLine(inputText);
+export const transformations = [
+	{
+		id: "upperCase",
+		label: "Upper case",
+		example: { original: "eXaMpLe TeXt", result: "EXAMPLE TEXT" },
+		transform: upperCase,
+	},
+	{
+		id: "lowerCase",
+		label: "Lower case",
+		example: { original: "eXaMpLe TeXt", result: "example text" },
+		transform: lowerCase,
+	},
+	{
+		id: "titleCase",
+		label: "Title case",
+		example: { original: "eXaMpLe TeXt", result: "Example Text" },
+		transform: titleCase,
+	},
+	{
+		id: "sentenceCase",
+		label: "Sentence case",
+		example: { original: "eXaMpLe TeXt", result: "Example text" },
+		transform: sentenceCase,
+	},
+	{
+		id: "invertCase",
+		label: "Invert case",
+		example: { original: "eXaMpLe TeXt", result: "ExAmPlE tExT" },
+		transform: invertCase,
+	},
+	{
+		id: "pointToComma",
+		label: "Point to comma",
+		example: { original: "12.345", result: "12,345" },
+		transform: pointToComma,
+	},
+	{
+		id: "commaToPoint",
+		label: "Comma to point",
+		example: { original: "12,345", result: "12.345" },
+		transform: commaToPoint,
+	},
+	{
+		id: "removeNumbers",
+		label: "Remove numbers",
+		example: { original: "Example1234Text", result: "ExampleText" },
+		transform: removeNumbers,
+	},
+	{
+		id: "removeNonNumeric",
+		label: "Remove non-numbers",
+		example: { original: "+(48) 123-456-789", result: "48123456789" },
+		transform: removeNonNumberic,
+	},
+	{
+		id: "removeSpaces",
+		label: "Remove spaces",
+		example: { original: "E x amp le", result: "Example" },
+		transform: removeSpaces,
+	},
+	{
+		id: "reverseText",
+		label: "Reverse text",
+		example: { original: "Example", result: "elpmaxE" },
+		transform: reverseText,
+	},
+	{
+		id: "removeDuplicateWordsDividedByComma",
+		label: "Remove duplicate words (divided by comma)",
+		example: { original: "a,b,b,c,d,d", result: "a,b,c,d" },
+		transform: removeDuplicateWordsDividedByComma,
+	},
+	{
+		id: "removeDuplicateLines",
+		label: "Remove duplicate lines",
+		example: { original: "example\nexample\ntext", result: "example\ntext" },
+		transform: removeDuplicateLines,
+	},
+	{
+		id: "toMultipleLines",
+		label: "Single line to multiple lines",
+		example: { original: "example, text", result: "example\ntext" },
+		transform: toMultipleLines,
+	},
+	{
+		id: "toSingleLine",
+		label: "Multiple lines to single line",
+		example: { original: "example\ntext", result: "example text" },
+		transform: toSingleLine,
+	},
+] as const;
 
-		default:
-			return "";
-	}
-};
+export type TransformationId = (typeof transformations)[number]["id"];
+
+const transformationById = new Map(
+	transformations.map((transformation) => [transformation.id, transformation.transform]),
+);
+
+const getFunction = (functionId: string, inputText: string): string =>
+	transformationById.get(functionId as TransformationId)?.(inputText) ?? "";
 
 export default getFunction;

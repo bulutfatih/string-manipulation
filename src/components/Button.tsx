@@ -1,22 +1,16 @@
+import { FloatingPortal, offset, useFloating, useHover, useInteractions } from "@floating-ui/react";
 import type React from "react";
 import { useState } from "react";
-import { FloatingPortal, offset, useFloating, useHover, useInteractions } from "@floating-ui/react";
 
 type ButtonProps = {
 	className?: string;
 	tooltip: string;
 	tooltipPlacement?: "top" | "bottom" | "left" | "right";
-	onClick: (e: React.MouseEvent) => void;
+	onClick: () => void;
 	children: React.ReactNode;
 };
 
-const Button: React.FC<ButtonProps> = ({ 
-	className, 
-	tooltip, 
-	tooltipPlacement = "bottom", 
-	onClick, 
-	children 
-}) => {
+const Button: React.FC<ButtonProps> = ({ className, tooltip, tooltipPlacement = "bottom", onClick, children }) => {
 	const [open, setOpen] = useState(false);
 	const { refs, floatingStyles, context } = useFloating({
 		open,
@@ -30,22 +24,19 @@ const Button: React.FC<ButtonProps> = ({
 
 	return (
 		<>
-			<div 
-				ref={refs.setReference} 
-				{...getReferenceProps()} 
-				className={`button ${className || ''}`}
+			<button
+				type="button"
+				aria-label={tooltip}
+				ref={refs.setReference}
+				{...getReferenceProps()}
+				className={`button ${className || ""}`}
 				onClick={onClick}
 			>
 				{children}
-			</div>
+			</button>
 			{open && (
 				<FloatingPortal>
-					<div
-						ref={refs.setFloating}
-						className="button__tooltip"
-						style={floatingStyles}
-						{...getFloatingProps()}
-					>
+					<div ref={refs.setFloating} className="button__tooltip" style={floatingStyles} {...getFloatingProps()}>
 						{tooltip}
 					</div>
 				</FloatingPortal>
@@ -54,4 +45,4 @@ const Button: React.FC<ButtonProps> = ({
 	);
 };
 
-export default Button; 
+export default Button;

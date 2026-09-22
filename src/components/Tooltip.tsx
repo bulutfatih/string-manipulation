@@ -1,4 +1,4 @@
-import { FloatingPortal, type Placement, offset, useFloating, useHover, useInteractions } from "@floating-ui/react";
+import { FloatingPortal, offset, type Placement, useFloating, useHover, useInteractions } from "@floating-ui/react";
 import type React from "react";
 import { type ReactNode, useState } from "react";
 
@@ -28,12 +28,7 @@ const Tooltip: React.FC<TooltipProps> = ({ content, children, placement = "top",
 			</div>
 			{open && (
 				<FloatingPortal>
-					<div
-						ref={refs.setFloating}
-						className="tooltip"
-						style={floatingStyles}
-						{...getFloatingProps()}
-					>
+					<div ref={refs.setFloating} className="tooltip" style={floatingStyles} {...getFloatingProps()}>
 						{content}
 					</div>
 				</FloatingPortal>

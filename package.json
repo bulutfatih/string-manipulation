@@ -3,27 +3,30 @@
 	"version": "0.2.2",
 	"private": true,
 	"homepage": "/string-manipulation",
+	"type": "module",
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
-		"check": "biome check .",
+		"test": "vitest run",
+		"check": "biome check . && tsc --noEmit",
 		"check:fix": "biome check --write ."
 	},
 	"dependencies": {
-		"@floating-ui/react": "0.27.16",
+		"@floating-ui/react": "0.27.20",
 		"esrever": "0.2.0",
-		"react": "19.2.0",
-		"react-dom": "19.2.0",
-		"sass": "1.93.3"
+		"react": "19.3.0",
+		"react-dom": "19.3.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.3.2",
+		"@biomejs/biome": "2.5.14",
 		"@types/esrever": "0.2.3",
-		"@types/react": "19.2.2",
-		"@types/react-dom": "19.2.2",
-		"@vitejs/plugin-react": "5.1.0",
-		"typescript": "5.9.3",
-		"vite": "7.1.12"
+		"@types/react": "19.3.0",
+		"@types/react-dom": "19.3.0",
+		"@vitejs/plugin-react": "6.1.1",
+		"sass": "1.104.1",
+		"typescript": "7.0.2",
+		"vite": "8.3.0",
+		"vitest": "5.0.1"
 	}
 }

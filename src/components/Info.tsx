@@ -27,7 +27,12 @@ type InfoProps = {
 
 const Info: React.FC<InfoProps> = ({ example }) => (
 	<Tooltip content={<InfoTemplate {...example} />} placement="bottom">
-		<i className="info__button">i</i>
+		<i className="info__button" aria-hidden="true">
+			i
+		</i>
+		<span className="visually-hidden">
+			Example: {example.original} becomes {example.result}
+		</span>
 	</Tooltip>
 );
 

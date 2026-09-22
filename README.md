@@ -17,7 +17,7 @@ A modern, minimal, and fast web app for manipulating strings in various ways. Bu
 ## Getting Started
 
 ### Prerequisites
-- Node.js (v18+ recommended)
+- Node.js 20.19+ or 22.12+
 
 ### Setup
 ```bash
@@ -43,6 +43,11 @@ npm run preview
 ```bash
 npm run check
 npm run check:fix
+```
+
+### Tests
+```bash
+npm test
 ```
 
 ## Contributing
