@@ -2,7 +2,6 @@
 	"name": "string-manipulation",
 	"version": "0.2.2",
 	"private": true,
-	"homepage": "/string-manipulation",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
